@@ -6,7 +6,7 @@ export const useRegister = () => {
     mutationFn: async (data: { 
       username: string; 
       password: string; 
-      Role: string 
+      role: 'Admin' | 'User'
     }) => await axiosInstance.post("/auth/register", data)
   });
 };

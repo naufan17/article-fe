@@ -19,6 +19,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useLogin } from "@/hooks/api/use-login"
 import { toast } from "sonner"
 import { Alert, AlertTitle } from "@/components/ui/alert"
+import { useDispatch } from "react-redux"
+import { setLogin } from "@/store/slices/auth-slice"
+import { AppDispatch } from "@/store/store"
 
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -31,6 +34,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const dispatch = useDispatch<AppDispatch>()
   const [error, setError] = useState<string | null>(null)
   const loginUser = useLogin()
   const {
@@ -45,6 +49,7 @@ export function LoginForm({
     loginUser.mutate(data, {
       onSuccess: (response) => {
         setError(null)
+        dispatch(setLogin({ token: response.data.token, role: response.data.role }))
         toast.success(response.data.message, {
           style: {
             color: "green",

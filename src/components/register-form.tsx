@@ -32,7 +32,7 @@ import { Alert, AlertTitle } from "@/components/ui/alert"
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
   password: z.string().min(8, "Password must be at least 8 characters"),
-  Role: z.enum(["user", "admin"], {
+  role: z.enum(["User", "Admin"], {
     errorMap: () => ({ message: "Role is required" }),
   }),
 })
@@ -135,7 +135,7 @@ export function RegisterForm({
                 </div>
                 <div className="grid gap-3">
                   <Controller
-                    name="Role"
+                    name="role"
                     control={control}
                     render={({ field }) => (
                       <Select
@@ -147,15 +147,15 @@ export function RegisterForm({
                           <SelectValue placeholder="Select a role" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="user">User</SelectItem>
-                          <SelectItem value="admin">Admin</SelectItem>
+                          <SelectItem value="User">User</SelectItem>
+                          <SelectItem value="Admin">Admin</SelectItem>
                         </SelectContent>
                       </Select>
                     )}
                   />
-                  {errors.Role && (
+                  {errors.role && (
                     <p className="text-red-600 text-sm">
-                      {errors.Role.message}
+                      {errors.role.message}
                     </p>
                   )}
                 </div>
