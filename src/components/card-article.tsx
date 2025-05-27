@@ -10,7 +10,13 @@ interface CardArticleProps {
   category: string[];
 }
 
-export function CardArticle({ title, description, imageUrl, date, category }: CardArticleProps) {
+export function CardArticle({ 
+  title, 
+  description, 
+  imageUrl, 
+  date, 
+  category 
+}: CardArticleProps) {
   return (
     <Card className="border-none shadow-none">
       <CardContent className="flex flex-col items-start p-4">
