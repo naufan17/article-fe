@@ -17,7 +17,6 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useLogin } from "@/hooks/api/use-login"
-import { toast } from "sonner"
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import { useDispatch } from "react-redux"
 import { setLogin } from "@/store/slices/auth-slice"
@@ -50,11 +49,6 @@ export function LoginForm({
       onSuccess: (response) => {
         setError(null)
         dispatch(setLogin({ token: response.data.token, role: response.data.role }))
-        toast.success(response.data.message, {
-          style: {
-            color: "green",
-          }
-        })
       },
       onError: (error: any) => {
         setError(error.response?.data?.message || "Login failed")
