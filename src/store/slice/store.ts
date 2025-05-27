@@ -15,13 +15,13 @@ const persistConfig: {
   storage,
   transforms: [
     encryptTransform({
-      secretKey: process.env.NEXT_SECRET_KEY || '',
+      secretKey: process.env.NEXT_SECRET_KEY || 'secret',
       onError: function (error: any) {
         console.error(error)
       },
     }),
   ],
-  whitelist: []
+  whitelist: ['auth']
 }
 
 const rootReducer = combineReducers({
