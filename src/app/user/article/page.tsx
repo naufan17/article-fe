@@ -19,7 +19,6 @@ export default function UserArticlePage() {
   
   return (
     <>
-      <Navbar />
       <Hero
         data={categories?.data ?? []}
         category={category}
