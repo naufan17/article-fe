@@ -6,8 +6,7 @@ import { NavActions } from "@/components/nav-user";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { forbidden } from "next/navigation";
 import { useSelector } from "react-redux"
 
 export default function UserLayout({ 
@@ -16,13 +15,8 @@ export default function UserLayout({
   children: React.ReactNode 
 }) {
   const role: 'Admin' = useSelector((state: any) => state.auth.role);
-  const router = useRouter();
 
-  useEffect(() => {
-    if (role !== 'Admin') {
-      router.push('/');
-    }
-  }, [role]);
+  if (role !== 'Admin') forbidden();
 
   return (
     <SidebarProvider>
