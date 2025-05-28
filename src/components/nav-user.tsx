@@ -7,14 +7,18 @@ import {
   LogOut,
   Newspaper,
 } from "lucide-react"
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuGroup, 
+  DropdownMenuItem, 
+  DropdownMenuTrigger 
+} from "@/components/ui/dropdown-menu"
+import { 
+  Avatar, 
+  AvatarFallback, 
+  AvatarImage 
+} from "@/components/ui/avatar"
 import Link from "next/link"
 import { setLogout } from "@/store/slices/auth-slice"
 import { useDispatch } from "react-redux"
@@ -27,8 +31,7 @@ const profile = {
   avatar: "https://github.com/shadcn.png",
 }
 
-export function NavActions() {
-  const { isMobile } = useSidebar()
+export function NavUser() {
   const dispatch = useDispatch<AppDispatch>()
   const router = useRouter()
 
@@ -38,53 +41,40 @@ export function NavActions() {
   }
 
   return (
-    <SidebarMenu>
-      <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              <Avatar className="h-8 w-8 rounded-full">
-                <AvatarImage src={profile?.avatar} alt={profile?.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{profile?.name}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
-            align="end"
-            sideOffset={4}
-          >
-            <DropdownMenuGroup>
-              <Link href="/article">
-                <DropdownMenuItem>
-                  <Newspaper />
-                  Article
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/profile">
-                <DropdownMenuItem>
-                  <BadgeCheck />
-                  Profile
-                </DropdownMenuItem>
-              </Link>
-              <div onClick={handleLogout}>
-                <DropdownMenuItem>
-                  <LogOut />
-                  Log out
-                </DropdownMenuItem>
-              </div>            
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarMenuItem>
-    </SidebarMenu>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <div className="flex items-center">
+          <Avatar className="h-8 w-8 rounded-full mr-2">
+            <AvatarImage src="https://github.com/shadcn.png" alt="Profile Image"/>
+            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+          </Avatar>
+          <div className="grid flex-1 text-left text-sm leading-tight">
+            <span className="truncate font-medium text-white">
+              {profile?.name}
+            </span>
+          </div>
+        </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+        align="end"
+        sideOffset={4}
+      >
+        <DropdownMenuGroup>
+          <Link href="/profile">
+            <DropdownMenuItem>
+              <BadgeCheck />
+              Profile
+            </DropdownMenuItem>
+          </Link>
+          <div onClick={handleLogout}>
+            <DropdownMenuItem>
+              <LogOut />
+              Log out
+            </DropdownMenuItem>
+          </div>            
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

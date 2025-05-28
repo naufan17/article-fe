@@ -1,14 +1,33 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-export function Hero() {
+interface CategoryProps {
+  data: {
+    id: string;
+    name: string;
+  }[];
+  category: string | undefined;
+  setCategory: (category: string | undefined) => void;
+  title: string | undefined;
+  setTitle: (title: string | undefined) => void;
+  setPage: (page: number) => void;
+}
+
+export function Hero({ data, category, setCategory, title, setTitle, setPage }: CategoryProps) {
   return (
     <div
       className="relative flex items-center justify-center h-[500px] bg-cover bg-center"
       style={{ backgroundImage: 'url(/images/hero.jpg)' }}
     >
       <div className="absolute inset-0 bg-blue-600 opacity-80" />
-      <div className="relative py-8 px-4 md:py-12 md:px-8 mx-auto sm:w-screen sm:max-w-3xl text-white text-center">
+      <div className="relative py-8 px-4 md:py-12 md:px-8 mx-auto sm:w-screen sm:max-w-4xl text-white text-center">
         <span className="text-sm sm:text-base font-bold mb-2 block">
           Blog genzet
         </span>
@@ -18,25 +37,42 @@ export function Hero() {
         <h5 className="text-xl sm:text-2xl font-normal mb-8">
           Your daily doose of design insights!
         </h5>
-        <div className="bg-blue-500 bg-opacity-90 rounded-xl p-2">
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
-            <Select>
-              <SelectTrigger className="w-full bg-white text-black">
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="design">Design</SelectItem>
-                <SelectItem value="development">Development</SelectItem>
-                <SelectItem value="news">News</SelectItem>
-              </SelectContent>
-            </Select>
-            <Input 
-              placeholder="Search articles" 
-              type="text"
-              name="search"
-              className="w-full bg-white text-black col-span-3" 
-            />
-          </div>
+        <div className="flex flex-col sm:flex-row gap-2 max-w-xl justify-center items-center mx-auto bg-blue-500 bg-opacity-90 rounded-xl p-2 w-full">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="justify-start text-slate-800 w-full sm:w-auto"
+              >
+                Select a category
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>
+                Categories
+              </DropdownMenuLabel>
+              {data.map((cat) => (
+              <DropdownMenuCheckboxItem
+                key={cat.id}
+                checked={category === cat.id}
+                onCheckedChange={(checked) => {
+                  setCategory(checked ? cat.id : undefined)
+                  setPage(1)
+                }}
+              >
+                {cat.name}
+              </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Input 
+            placeholder="Search articles" 
+            type="text"
+            name="search"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full bg-white text-black col-span-3" 
+          />
         </div>
       </div>
     </div>

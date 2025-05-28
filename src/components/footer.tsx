@@ -1,16 +1,19 @@
-import { LucideGitCommitHorizontal } from "lucide-react";
 import Link from "next/link";
-
+import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-blue-600 text-white py-6">
-      <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 justify-center items-center">
-        <Link href="/" className="text-white text-lg font-semibold justify-center">
-          <LucideGitCommitHorizontal className="inline-block mr-2" />
-          LogoIpsum
+    <footer className="w-full bg-blue-600 text-white py-4 sm:py-6">
+      <div className="flex flex-col sm:flex-row gap-1  justify-center items-center">
+        <Link href="/" className="p-2">
+          <Image 
+          src="/logo-white.svg" 
+          alt="Logo" 
+          width={120} 
+          height={30} 
+          />
         </Link>
-        <p className="text-base font-normal text-center justify-center">
+        <p className="text-sm sm:text-base font-normal text-center justify-center">
           © 2025 Blog genzet. All rights reserved.
         </p>
       </div>

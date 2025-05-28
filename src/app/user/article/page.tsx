@@ -1,88 +1,42 @@
 'use client'
 
+import { useState } from "react";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Content } from "@/components/content";
 import { Navbar } from "@/components/navbar";
-// import { useArticle } from "@/hooks/api/use-article";
-
-const articles = {
-  data: [
-    {
-      id: 1,
-      title: "Understanding React Hooks",
-      content: "A deep dive into React Hooks and how they can simplify your code.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-01",
-    },
-    {
-      id: 2,
-      title: "CSS Grid vs Flexbox",
-      content: "Comparing CSS Grid and Flexbox for layout design.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-02",
-    },
-    {
-      id: 3,
-      title: "JavaScript ES2023 Features",
-      content: "Exploring the new features introduced in JavaScript ES2023.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-03",
-    },
-    {
-      id: 4,
-      title: "Building Accessible Web Applications",
-      content: "Best practices for creating accessible web applications.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-04",
-    },
-    {
-      id: 5,
-      title: "State Management in React",
-      content: "An overview of state management solutions in React.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-05",
-    },
-    {
-      id: 6,
-      title: "Next.js for Server-Side Rendering",
-      content: "How to use Next.js for server-side rendering in React applications.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-06",
-    },
-    {
-      id: 7,
-      title: "Responsive Design Principles",
-      content: "Key principles for creating responsive web designs.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-07",
-    },
-    {
-      id: 8,
-      title: "Introduction to TypeScript",
-      content: "Getting started with TypeScript and its benefits for JavaScript developers.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-08",
-    },
-    {
-      id: 9,
-      title: "Web Performance Optimization",
-      content: "Techniques for optimizing web performance and improving load times.",
-      imageUrl: "/images/hero.jpg",
-      createdAt: "2023-10-09",
-    },
-  ]
-}
+import { useArticle } from "@/hooks/api/use-article";
+import { useCategory } from "@/hooks/api/use-category";
+import { ContentSkeleton } from "@/components/content-skeleton";
 
 export default function UserArticlePage() {
-  // const { data: articles } = useArticle();
-  // console.log(articles);
+  const [page, setPage] = useState<number>(1);
+  const [limit] = useState<number>(9);
+  const [category, setCategory] = useState<string>();
+  const [title, setTitle] = useState<string>();
+  const { data: articles, isLoading } = useArticle(page, limit, title, category);
+  const { data: categories } = useCategory();
   
   return (
     <>
       <Navbar />
-      <Hero />
-      <Content data={articles.data} />
+      <Hero
+        data={categories?.data ?? []}
+        category={category}
+        setCategory={setCategory}
+        title={title}
+        setTitle={setTitle}
+        setPage={setPage}
+      />
+      {isLoading ? (
+        <ContentSkeleton />
+      ) : articles?.data && articles.data.length === 0 ? (
+        <div className="text-center py-8">
+          No articles found.
+        </div>
+      ) : (
+        <Content data={articles?.data ?? []} total={articles.total} page={articles.page} limit={articles.limit} setPage={setPage} />
+      )}
       <Footer />
     </>
   );

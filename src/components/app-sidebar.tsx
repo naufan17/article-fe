@@ -35,12 +35,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="border-r-0 bg-primary text-white" {...props}>
       <SidebarHeader>
-        <Link href="/" className="text-white text-xl font-bold p-4">
+        <Link href="/" className="p-2">
           <Image 
             src="/logo-white.svg" 
             alt="Logo" 
             width={150} 
-            height={30} 
+            height={40} 
           />
         </Link>
         <NavMain items={data.navMain} />

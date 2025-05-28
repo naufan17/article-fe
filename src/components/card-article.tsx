@@ -4,7 +4,7 @@ import Image from "next/image";
 
 interface CardArticleProps {
   title: string;
-  description: string;
+  content: string;
   imageUrl: string;
   date: string;
   category: string[];
@@ -12,7 +12,7 @@ interface CardArticleProps {
 
 export function CardArticle({ 
   title, 
-  description, 
+  content, 
   imageUrl, 
   date, 
   category 
@@ -38,11 +38,11 @@ export function CardArticle({
           {title}
         </CardTitle>
         <p className="sm:text-sm sm:text-base font-normal text-slate-600 mt-1">
-          {description}
+            {content.split('\n\n')[0]}
         </p>
         <div className="flex flex-wrap mt-2">
           {category.map((cat, index) => (
-            <Badge key={index} className="text-xs sm:text-sm font-normal bg-blue-200 text-blue-900 px-3 py-1 rounded-full mr-2">
+            <Badge key={index} className="text-xs sm:text-sm font-normal bg-blue-200 text-blue-900 px-2.5 py-0.75 rounded-full mr-2">
               {cat}
             </Badge>
           ))}

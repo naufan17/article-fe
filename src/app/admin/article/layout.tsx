@@ -2,7 +2,7 @@
 'use client'
 
 import { AppSidebar } from "@/components/app-sidebar";
-import { NavActions } from "@/components/nav-user";
+import { NavUser } from "@/components/nav-user";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -37,7 +37,7 @@ export default function UserLayout({
             </Breadcrumb>
           </div>
           <div className="ml-auto px-3">
-            <NavActions />
+            <NavUser />
           </div>
         </header>
         {children}
