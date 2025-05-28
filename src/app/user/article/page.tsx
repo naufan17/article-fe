@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Content } from "@/components/content";
-import { Navbar } from "@/components/navbar";
 import { useArticle } from "@/hooks/api/use-article";
 import { useCategory } from "@/hooks/api/use-category";
 import { ContentSkeleton } from "@/components/content-skeleton";

@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { NavUser } from "@/components/nav-user";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 interface CategoryProps {
   data: {
@@ -64,6 +65,7 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
                   className="justify-start text-slate-800 w-full sm:w-auto"
                 >
                   Select a category
+                  <ChevronDown className="ml-2 h-4 w-4" />                  
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>

@@ -1,7 +1,3 @@
-"use client"
-
-import { type LucideIcon } from "lucide-react"
-
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -15,7 +11,7 @@ export function NavMain({
   items: {
     title: string
     url: string
-    icon: LucideIcon
+    icon: React.ElementType
     isActive?: boolean
   }[]
 }) {

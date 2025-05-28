@@ -1,10 +1,4 @@
-"use client"
-
 import * as React from "react"
-import {
-  Newspaper,
-  Tag,
-} from "lucide-react"
 import { NavMain } from "@/components/nav-main"
 import {
   Sidebar,
@@ -14,26 +8,20 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 
-const data = {
-  navMain: [
-    {
-      title: "Articles",
-      url: "#",
-      icon: Newspaper,
-      isActive: true,
-    },
-    {
-      title: "Category",
-      url: "#",
-      icon: Tag,
-      isActive: false,
-    }
-  ]
+interface SiderbarProps {
+  data: {
+    navMain: {
+      title: string
+      url: string
+      icon: React.ElementType
+      isActive?: boolean
+    }[]
+  }
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ data }: SiderbarProps) {
   return (
-    <Sidebar className="border-r-0 bg-primary text-white" {...props}>
+    <Sidebar className="border-r-0 bg-primary text-white">
       <SidebarHeader>
         <Link href="/" className="p-2">
           <Image 

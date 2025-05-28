@@ -1,7 +1,7 @@
 import AdminGuard from "@/components/guard/admin";
 import AdminLayout from "@/components/layout/admin";
 
-export default function ProfileLayout({ 
+export default function ArticleLayout({ 
   children 
 }: { 
   children: React.ReactNode 
