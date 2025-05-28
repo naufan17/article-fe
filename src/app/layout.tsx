@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Providers } from "@/app/provider";
 import "@/app/globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { Toaster } from "@/components/ui/sonner";
 
-const jakartaSans: NextFontWithVariable = Plus_Jakarta_Sans({
-  variable: "--font-jakarta-sans",
+const inter: NextFontWithVariable = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 })
 
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-white antialiased ${jakartaSans.variable} font-sans`}>
+      <body className={`bg-white antialiased ${inter.variable} font-sans`}>
         <Providers>
           <Toaster />
           <main>

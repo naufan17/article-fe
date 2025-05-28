@@ -3,7 +3,7 @@ import axiosInstance from "@/lib/axios";
 
 export const useArticle = () => {
   return useQuery({
-    queryKey: ["article"],
+    queryKey: ["articles"],
     queryFn: async () => {
       const response = await axiosInstance.get("/articles");
       return response.data;

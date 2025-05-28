@@ -1,9 +1,12 @@
 'use client'
 
-import { Footer } from "@/components/footer";
-import { Hero } from "@/components/hero";
-import { Content } from "@/components/content";
-import { Navbar } from "@/components/navbar";
+import { TableArticle } from "@/components/table-article";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { Plus } from "lucide-react";
+import Link from "next/link";
 // import { useArticle } from "@/hooks/api/use-article";
 
 const articles = {
@@ -76,14 +79,43 @@ const articles = {
 
 export default function UserArticlePage() {
   // const { data: articles } = useArticle();
-  // console.log(articles);
   
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Content data={articles.data} />
-      <Footer />
-    </>
+    <div className="bg-secondary h-screen">
+      <div className="bg-white mx-8 my-8 border  rounded-xl">
+        <div className="flex items-center justify-between p-4 border-b border-muted">
+          <div className="text-base font-semibold">
+            Total Article: {articles.data.length}
+          </div>
+        </div>
+        <div className="flex items-center justify-between p-4 gap-4 border-b border-muted">
+          <div className="flex items-center gap-4">
+            <Select>
+              <SelectTrigger className="bg-white text-black">
+                <SelectValue placeholder="Select a category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="design">Design</SelectItem>
+                <SelectItem value="development">Development</SelectItem>
+                <SelectItem value="news">News</SelectItem>
+              </SelectContent>
+            </Select>
+            <Input 
+              placeholder="Search articles" 
+              type="text"
+              name="search"
+              className="w-[320px] bg-white text-black col-span-3" 
+            />
+          </div>
+          <Link href="/admin/article/add">
+            <Button className="bg-blue-600">
+              <Plus className="h-4 w-4" />
+              Add Article
+            </Button>
+          </Link>
+        </div>
+        <TableArticle articles={articles} />
+      </div>
+    </div>
   );
 }
