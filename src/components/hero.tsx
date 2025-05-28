@@ -34,26 +34,24 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
   return (
     <>
       <nav className="absolute top-0 z-50 w-full bg-transparent">
-        <div className="hidden sm:flex  flex-wrap justify-between items-center mx-auto py-2 px-4 md:py-4 md:px-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <Link href="/" className="p-2">
+        <div className="flex flex-wrap justify-between items-center mx-auto py-2 px-4 md:py-4 md:px-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+          <Link href="/" className="p-2 w-28 sm:w-40 h-auto flex items-center justify-center">
             <Image 
-            src="/logo-white.svg" 
-            alt="Logo" 
-            width={150} 
-            height={30} 
+              src="/logo-white.svg" 
+              alt="Logo" 
+              width={150} 
+              height={30} 
             />
           </Link>
-          <div>
-            {isAuthenticated ? (
-              <NavUser />
-            ): (
-              <Link href="/login" className="p-2">
-                <Button variant="outline" className="cursor-pointer">
-                  Login
-                </Button>
-              </Link>
-            )}
-          </div>
+          {isAuthenticated ? (
+            <NavUser color="white" />
+          ): (
+            <Link href="/login" className="p-2">
+              <Button variant="outline" className="cursor-pointer bg-transparent text-white">
+                Login
+              </Button>
+            </Link>
+          )}
         </div>
       </nav>
       <div

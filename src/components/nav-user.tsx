@@ -25,7 +25,7 @@ import { AppDispatch } from "@/store/store"
 import { useRouter } from "next/navigation"
 import { useProfile } from "@/hooks/api/use-profile"
 
-export function NavUser() {
+export function NavUser({ color }: { color: string }) {
   const dispatch = useDispatch<AppDispatch>()
   const role = useSelector((state: any) => state.auth.role)
   const router = useRouter()
@@ -39,17 +39,20 @@ export function NavUser() {
   return (
     <>
       {isLoading ? (
-        <div className="h-10 w-20 rounded-lg bg-slate-200 animate-pulse"></div>
+        <div className="h-8 w-20 rounded-lg bg-slate-200 animate-pulse"></div>
       ) : (
         <DropdownMenu>
           <DropdownMenuTrigger>
             <div className="flex items-center">
-              <Avatar className="h-8 w-8 rounded-full mr-2">
+              <Avatar className="h-6 sm:h-8 w-6 sm:w-8 rounded-full mr-2">
                 <AvatarImage src="https://github.com/shadcn.png" alt="Profile Image"/>
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">
+                <span
+                  className="truncate text-xs sm:text-sm font-medium"
+                  style={{ color: color === "black" ? "#000" : "#fff" }}
+                >
                   {profile?.username}
                 </span>
               </div>
