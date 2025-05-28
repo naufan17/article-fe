@@ -1,19 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-'use client'
+import GuestGuard from "@/components/guard/guest";
 
-import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux"
-
-export default function GuestLayout({ 
+export default function RegisterLayout({ 
   children 
 }: { 
   children: React.ReactNode 
 }) {
-  const isAuthenticated: boolean = useSelector((state: any) => state.auth.isAuthenticated);
-  const role: 'User' | 'Admin' = useSelector((state: any) => state.auth.role);
-  const router = useRouter();
-
-  if (isAuthenticated && role) router.push(`/${role.toLocaleLowerCase()}/article`);
-
-  return isAuthenticated && role ? null : <>{children}</>;
+  return <GuestGuard>{children}</GuestGuard>;
 }
