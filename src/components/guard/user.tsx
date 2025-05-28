@@ -12,11 +12,8 @@ export default function UserGuard({
   const role: 'User' | 'Admin' = useSelector((state: any) => state.auth.role);
   const router = useRouter();
 
-  if (!isAuthenticated) {
-    router.push('/login');
-  } else if (role !== 'User') {
-    forbidden();
-  }
+  if (!isAuthenticated) router.push('/login');
+  if (role !== 'User') forbidden();
 
   return isAuthenticated && role === 'User' ? <>{children}</> : null
 }

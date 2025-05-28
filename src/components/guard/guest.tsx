@@ -14,7 +14,7 @@ export default function GuestGuard({
   const router = useRouter();
 
   if (isAuthenticated && role === 'Admin') router.push(`/${role.toLocaleLowerCase()}/articles`);
-  if (isAuthenticated && role === 'User') router.push(`/articles`);
+  if (isAuthenticated && role === 'User') router.push('/articles');
 
   return isAuthenticated && role ? null : <>{children}</>;
 }

@@ -12,11 +12,8 @@ export default function AdminGuard({
   const role: 'User' | 'Admin' = useSelector((state: any) => state.auth.role);
   const router = useRouter();
 
-  if (!isAuthenticated) {
-    router.push('/login');
-  } else if (role !== 'Admin') {
-    forbidden();
-  }
+  if (!isAuthenticated) router.push('/login');
+  if (role !== 'Admin') forbidden();
 
   return isAuthenticated && role === 'Admin' ? <>{children}</> : null
 }
