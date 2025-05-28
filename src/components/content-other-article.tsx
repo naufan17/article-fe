@@ -1,7 +1,6 @@
 'use client'
 
-import { CardArticle } from "./card-article";
-import { ContentPagination } from "./content-pagination";
+import { CardArticle } from "@/components/card-article";
 
 interface ContentProps {
   data: {
@@ -25,15 +24,16 @@ interface ContentProps {
       username: string;
     }
   }[];
-  total: number
-  page: number
-  limit: number
-  setPage: (page: number) => void
 }
 
-export function Content({ data, total, page, limit, setPage }: ContentProps) {
+export function ContentOtherArticle ({ data }: ContentProps) {
   return (
     <div className="flex flex-wrap items-center justify-center mx-auto py-8 px-4 md:py-12 md:px-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <div className="flex justify-start w-full">
+        <h2 className="text-left text-xl sm:text-2xl font-semibold mb-4">
+          Other Article
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-start gap-4 md:gap-6 w-full">
         {data.map((article) => (
           <CardArticle
@@ -47,7 +47,6 @@ export function Content({ data, total, page, limit, setPage }: ContentProps) {
           />
         ))}
      </div>
-     <ContentPagination total={total} page={page} limit={limit} setPage={setPage} />
     </div>
   );
 }

@@ -62,12 +62,20 @@ export function NavUser() {
           >
             <DropdownMenuGroup>
               {role === "Admin" && (
-                <Link href="/admin/profile">
-                  <DropdownMenuItem>
-                    <BadgeCheck />
-                    Profile
-                  </DropdownMenuItem>
-                </Link>
+                <>
+                  <Link href="/admin/profile">
+                    <DropdownMenuItem>
+                      <BadgeCheck />
+                      Profile
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link href="/admin/articles">
+                    <DropdownMenuItem>
+                      <BadgeCheck />
+                      Articles
+                    </DropdownMenuItem>
+                  </Link>
+                </>
               )}
               {role === "User" && (
                 <Link href="/user/profile">

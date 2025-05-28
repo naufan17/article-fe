@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+'use client'
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +14,7 @@ import Link from "next/link";
 import { NavUser } from "@/components/nav-user";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import { useSelector } from "react-redux";
 
 interface CategoryProps {
   data: {
@@ -25,6 +29,8 @@ interface CategoryProps {
 }
 
 export function Hero({ data, category, setCategory, title, setTitle, setPage }: CategoryProps) {
+  const isAuthenticated: boolean = useSelector((state: any) => state.auth.isAuthenticated);
+
   return (
     <>
       <nav className="absolute top-0 z-50 w-full bg-transparent">
@@ -38,7 +44,15 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
             />
           </Link>
           <div>
-            <NavUser />
+            {isAuthenticated ? (
+              <NavUser />
+            ): (
+              <Link href="/login" className="p-2">
+                <Button variant="outline" className="cursor-pointer">
+                  Login
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </nav>
