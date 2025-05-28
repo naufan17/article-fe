@@ -9,7 +9,7 @@ import {
   CardContent,
   CardHeader,
 } from "@/components/ui/card"
-import { AlertCircle, LucideGitCommitHorizontal } from "lucide-react"
+import { AlertCircle } from "lucide-react"
 import { 
   Select, 
   SelectContent, 
@@ -28,6 +28,7 @@ import { AxiosResponse } from "axios"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { Alert, AlertTitle } from "@/components/ui/alert"
+import Image from "next/image"
 
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -81,9 +82,13 @@ export function RegisterForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="shadow-none border-none sm:border">
         <CardHeader className="text-center justify-center px-0 sm:px-6">
-          <Link href="/" className="text-black text-xl font-bold">
-            <LucideGitCommitHorizontal className="inline-block mr-2 text-blue-600" />
-            LogoIpsum
+          <Link href="/" className="p-4">
+            <Image 
+              src="/logo-color.svg" 
+              alt="Logo" 
+              width={150} 
+              height={30} 
+            />
           </Link>
         </CardHeader>
         <CardContent className="px-0 sm:px-6">

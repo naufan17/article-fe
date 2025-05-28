@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { AlertCircle, LucideGitCommitHorizontal } from "lucide-react"
+import { AlertCircle } from "lucide-react"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -21,6 +21,7 @@ import { Alert, AlertTitle } from "@/components/ui/alert"
 import { useDispatch } from "react-redux"
 import { setLogin } from "@/store/slices/auth-slice"
 import { AppDispatch } from "@/store/store"
+import Image from "next/image"
 
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -60,9 +61,13 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="shadow-none border-none sm:border">
         <CardHeader className="text-center justify-center px-0 sm:px-6">
-          <Link href="/" className="text-black text-xl font-bold">
-            <LucideGitCommitHorizontal className="inline-block mr-2 text-blue-600" />
-            LogoIpsum
+          <Link href="/" className="p-4">
+            <Image 
+              src="/logo-color.svg" 
+              alt="Logo" 
+              width={150} 
+              height={30} 
+            />
           </Link>
         </CardHeader>
         <CardContent className="px-0 sm:px-6">

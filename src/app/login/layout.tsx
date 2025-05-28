@@ -2,7 +2,6 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useSelector } from "react-redux"
 
 export default function GuestLayout({ 
@@ -14,9 +13,7 @@ export default function GuestLayout({
   const role: 'User' | 'Admin' = useSelector((state: any) => state.auth.role);
   const router = useRouter();
 
-  useEffect(() => {
-    if (isAuthenticated && role) router.push(`/${role.toLocaleLowerCase()}/article`);
-  }, [isAuthenticated, role]);
+  if (isAuthenticated && role) router.push(`/${role.toLocaleLowerCase()}/article`);
 
   return isAuthenticated && role ? null : <>{children}</>;
 }
