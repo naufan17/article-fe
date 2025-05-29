@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatDate } from "@/lib/formatdate";
+import { Edit, Eye, Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface TableArticleProps {
   data: {
@@ -57,21 +59,36 @@ export function TableArticle({ data }: TableArticleProps) {
             <TableCell>
               <Link 
                 href={`/articles/${article.id}`}
-                className="text-blue-500 mr-2"
+                className="text-blue-500"
               >
-                Preview
+                <Button 
+                  variant="ghost" 
+                  className="cursor-pointer"
+                >
+                  <Eye className="h-4 w-4 text-slate-600" />
+                </Button>
               </Link>
               <Link 
                 href={`/admin/articles/${article.id}/edit`}
-                className="text-blue-500 mr-2"
+                className="text-blue-500"
               >
-                Edit
+                <Button 
+                  variant="ghost"
+                  className="cursor-pointer"
+                >
+                  <Edit className="h-4 w-4 text-blue-600" />
+                </Button>
               </Link>
               <Link 
                 href={`/admin/articles/${article.id}/delete`}
                 className="text-red-500"
               >
-                Delete
+                <Button 
+                  variant="ghost"
+                  className="cursor-pointer"
+                >
+                  <Trash2 className="h-4 w-4 text-red-600" />
+                </Button>
               </Link>
             </TableCell>
           </TableRow>

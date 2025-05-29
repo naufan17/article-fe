@@ -1,6 +1,10 @@
-import Link from "next/link"
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Forbidden() {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-4xl font-bold">
@@ -9,9 +13,12 @@ export default function Forbidden() {
       <p className="text-lg">
         Page Forbidden
       </p>
-      <Link href="/" className="text-blue-500">
-        Go Home
-      </Link>
+      <button
+        onClick={() => router.back()}
+        className="text-blue-500 cursor-pointer"
+      >
+        Go Back
+      </button>
     </div>
-  )
+  );
 }

@@ -131,7 +131,7 @@ export function TableCategory({ data }: TableCategoryProps) {
                       });
                     }}
                   >
-                    <Edit className="h-4 w-4 text-blue-500" />
+                    <Edit className="h-4 w-4 text-blue-600" />
                   </Button>
                 </DialogTrigger>
                 <DialogContent>
@@ -170,7 +170,7 @@ export function TableCategory({ data }: TableCategoryProps) {
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="ghost" className="cursor-pointer">
-                    <Trash2 className="h-4 w-4 text-red-500" />
+                    <Trash2 className="h-4 w-4 text-red-600" />
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
