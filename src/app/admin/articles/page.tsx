@@ -28,7 +28,7 @@ export default function UserArticlePage() {
             {isLoading ? (
               "Loading..."
             ) : (
-              articles?.data && articles.data.length === 0 ? "No articles found." : `${articles.total} articles found.`
+              articles?.data && articles.data.length === 0 ? "No articles found." : `Total articles: ${articles.total}`
             )}
           </div>
         </div>
@@ -66,13 +66,13 @@ export default function UserArticlePage() {
               placeholder="Search articles" 
               type="text"
               name="search"
-              value={title}
+              value={title ?? ""}
               onChange={(e) => setTitle(e.target.value)}
               className="bg-white text-black w-sm" 
             />
           </div>
-          <Link href="/admin/article/add">
-            <Button className="bg-blue-600">
+          <Link href="/admin/articles/add">
+            <Button className="bg-blue-600 cursor-pointer">
               <Plus className="h-4 w-4" />
               Add Article
             </Button>
@@ -80,7 +80,7 @@ export default function UserArticlePage() {
         </div>
         {isLoading ? (
           <div className="flex items-center justify-center p-4">
-            <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+            <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"/>
           </div>
         ) : articles?.data && articles.data.length === 0 ? (
           <div className="flex items-center justify-center p-4">

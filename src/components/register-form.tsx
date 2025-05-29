@@ -57,6 +57,7 @@ export function RegisterForm({
 
   const onSubmit = (data: FormData) => {
     setLoading(true);
+    setError(null);
 
     registerUser.mutate(data, {
       onSuccess: () => {

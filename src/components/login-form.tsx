@@ -48,13 +48,16 @@ export function LoginForm({
 
   const onSubmit = (data: FormData) => {
     setLoading(true)
+    setError(null)
 
     loginUser.mutate(data, {
       onSuccess: (response) => {
         setError(null)
+        setLoading(false)
         dispatch(setLogin({ token: response.data.token, role: response.data.role }))
       },
       onError: (error: any) => {
+        setLoading(false)
         setError(error.response?.data?.message || "Login failed")
       },
     })

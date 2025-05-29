@@ -56,19 +56,19 @@ export function TableArticle({ data }: TableArticleProps) {
             <TableCell>{formatDate(article.createdAt)}</TableCell>
             <TableCell>
               <Link 
-                href={`/article/${article.id}`}
+                href={`/articles/${article.id}`}
                 className="text-blue-500 mr-2"
               >
                 Preview
               </Link>
               <Link 
-                href={`/admin/article/${article.id}/edit`}
+                href={`/admin/articles/${article.id}/edit`}
                 className="text-blue-500 mr-2"
               >
                 Edit
               </Link>
               <Link 
-                href={`/admin/article/${article.id}/delete`}
+                href={`/admin/articles/${article.id}/delete`}
                 className="text-red-500"
               >
                 Delete
