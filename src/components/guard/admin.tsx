@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
+
+import { useEffect } from "react";
 import { useRouter, forbidden } from "next/navigation";
 import { useSelector } from "react-redux"
 
@@ -12,8 +14,10 @@ export default function AdminGuard({
   const role: 'User' | 'Admin' = useSelector((state: any) => state.auth.role);
   const router = useRouter();
 
-  if (!isAuthenticated) router.push('/login');
-  if (role !== 'Admin') forbidden();
+  useEffect(() => {
+    if (!isAuthenticated) router.push('/login');
+    else if (role !== 'Admin') forbidden();
+  }, [isAuthenticated, role, router]);
 
   return isAuthenticated && role === 'Admin' ? <>{children}</> : null
 }

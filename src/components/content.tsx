@@ -1,7 +1,7 @@
 'use client'
 
-import { CardArticle } from "./card-article";
-import { ContentPagination } from "./content-pagination";
+import { CardArticle } from "@/components/card-article";
+import { ContentPagination } from "@/components/content-pagination";
 
 interface ContentProps {
   data: {

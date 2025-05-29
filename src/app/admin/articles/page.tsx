@@ -2,21 +2,21 @@
 'use client'
 
 import { useState } from "react";
+import Link from "next/link";
+import { useArticle } from "@/hooks/api/use-article";
+import { useCategory } from "@/hooks/api/use-category";
 import { TableArticle } from "@/components/table-article";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronDown, Plus } from "lucide-react";
-import Link from "next/link";
-import { useArticle } from "@/hooks/api/use-article";
 import { ContentPagination } from "@/components/content-pagination";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { useCategory } from "@/hooks/api/use-category";
 
 export default function UserArticlePage() {
   const [page, setPage] = useState<number>(1);
   const [limit] = useState<number>(10);
   const [category, setCategory] = useState<string>();
-  const [title, setTitle] = useState<string>();
+  const [title, setTitle] = useState<string | undefined>(undefined);
   const { data: articles, isLoading } = useArticle(page, limit, title, category);
   const { data: categories } = useCategory();
   

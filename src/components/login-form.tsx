@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react"
-import { cn } from "@/lib/utils"
+import Image from "next/image"
 import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { setLogin } from "@/store/slices/auth-slice"
+import { AppDispatch } from "@/store/store"
 import {
   Card,
   CardContent,
@@ -19,9 +22,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useLogin } from "@/hooks/api/use-login"
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import { useDispatch } from "react-redux"
-import { setLogin } from "@/store/slices/auth-slice"
-import { AppDispatch } from "@/store/store"
-import Image from "next/image"
 
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -64,7 +64,7 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="shadow-none border-none sm:border">
         <CardHeader className="text-center justify-center px-0 sm:px-6">
-          <Link href="/" className="p-4">
+          <Link href="/articles" className="p-2 w-28 sm:w-40 h-auto flex items-center justify-center">
             <Image 
               src="/logo-color.svg" 
               alt="Logo" 

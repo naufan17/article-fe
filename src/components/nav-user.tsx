@@ -39,14 +39,19 @@ export function NavUser({ color }: { color: string }) {
   return (
     <>
       {isLoading ? (
-        <div className="h-8 w-20 rounded-lg bg-slate-200 animate-pulse"></div>
+        <div className="flex items-center">
+          <div className="h-6 sm:h-8 w-6 sm:w-8 rounded-full mr-2 bg-slate-200 animate-pulse"/>
+          <data className="h-2 w-16 rounded-md bg-slate-200 animate-pulse"/>
+        </div>
       ) : (
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger className="cursor-pointer">
             <div className="flex items-center">
               <Avatar className="h-6 sm:h-8 w-6 sm:w-8 rounded-full mr-2">
                 <AvatarImage src="https://github.com/shadcn.png" alt="Profile Image"/>
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg">
+                  {profile?.username?.charAt(0)?.toUpperCase() || "U"}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span

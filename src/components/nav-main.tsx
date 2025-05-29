@@ -1,9 +1,9 @@
+import Link from "next/link"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import Link from "next/link"
 
 export function NavMain({
   items,
@@ -19,12 +19,12 @@ export function NavMain({
     <SidebarMenu>
       {items.map((item) => (
         <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild isActive={item.isActive} className="hover:bg-blue-400 hover:text-white active:bg-blue-400 active:text-white hover:text-white hover:bg-blue-400 data-[active=true]:bg-blue-400 data-[active=true]:text-white">
+          <SidebarMenuButton asChild isActive={item.isActive} className="active:bg-blue-400 active:text-white hover:text-white hover:bg-blue-400 data-[active=true]:bg-blue-400 data-[active=true]:text-white">
             <Link href={item.url}>
               <item.icon />
               <span>{item.title}</span>
             </Link>
-          </SidebarMenuButton>
+          </SidebarMenuButton> 
         </SidebarMenuItem>
       ))}
     </SidebarMenu>

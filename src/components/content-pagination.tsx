@@ -16,7 +16,7 @@ interface ContentPaginationProps {
 
 export function ContentPagination({ total, page, limit, setPage }: ContentPaginationProps) {
   return (
-    <Pagination>
+    <Pagination className="mt-4">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious 

@@ -1,18 +1,18 @@
 'use client'
 
 import { useState } from "react";
+import { useArticle } from "@/hooks/api/use-article";
+import { useCategory } from "@/hooks/api/use-category";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Content } from "@/components/content";
-import { useArticle } from "@/hooks/api/use-article";
-import { useCategory } from "@/hooks/api/use-category";
 import { ContentSkeleton } from "@/components/content-skeleton";
 
 export default function UserArticlePage() {
   const [page, setPage] = useState<number>(1);
   const [limit] = useState<number>(9);
   const [category, setCategory] = useState<string>();
-  const [title, setTitle] = useState<string>();
+  const [title, setTitle] = useState<string | undefined>(undefined);
   const { data: articles, isLoading } = useArticle(page, limit, title, category);
   const { data: categories } = useCategory();
   

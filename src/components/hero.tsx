@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import { useSelector } from "react-redux";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,11 +14,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 import { NavUser } from "@/components/nav-user";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import { useSelector } from "react-redux";
 
 interface CategoryProps {
   data: {
@@ -35,7 +35,7 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
     <>
       <nav className="absolute top-0 z-50 w-full bg-transparent">
         <div className="flex flex-wrap justify-between items-center mx-auto py-2 px-4 md:py-4 md:px-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <Link href="/" className="p-2 w-28 sm:w-40 h-auto flex items-center justify-center">
+          <Link href="/articles" className="p-2 w-28 sm:w-40 h-auto flex items-center justify-center">
             <Image 
               src="/logo-white.svg" 
               alt="Logo" 
@@ -47,7 +47,7 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
             <NavUser color="white" />
           ): (
             <Link href="/login" className="p-2">
-              <Button variant="outline" className="cursor-pointer bg-transparent text-white">
+              <Button variant="outline" className="px-3 sm:px-4 text-xs sm:text-sm cursor-pointer bg-transparent text-white">
                 Login
               </Button>
             </Link>

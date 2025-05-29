@@ -3,9 +3,18 @@
 import { usePathname } from "next/navigation";
 import { AppSidebar } from "@/components/app-sidebar";
 import { NavUser } from "@/components/nav-user";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import { 
+  Breadcrumb, 
+  BreadcrumbItem, 
+  BreadcrumbList, 
+  BreadcrumbPage 
+} from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { 
+  SidebarInset, 
+  SidebarProvider, 
+  SidebarTrigger 
+} from "@/components/ui/sidebar";
 import { Newspaper, Tag } from "lucide-react";
 
 const navMain = [
@@ -54,7 +63,7 @@ export default function AdminLayout({
             </Breadcrumb>
           </div>
           <div className="ml-auto px-3">
-            <NavUser />
+            <NavUser color="black" />
           </div>
         </header>
         <div className="bg-secondary min-h-screen">
