@@ -18,7 +18,7 @@ export default function UserArticlePage() {
   const [category, setCategory] = useState<string>();
   const [title, setTitle] = useState<string | undefined>(undefined);
   const { data: articles, isLoading } = useArticle(page, limit, title, category);
-  const { data: categories } = useCategory();
+  const { data: categories } = useCategory(1, 100);
   
   return (
     <>
