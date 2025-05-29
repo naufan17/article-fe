@@ -184,9 +184,7 @@ export function TableCategory({ data }: TableCategoryProps) {
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel 
-                      className="cursor-pointer"
-                    >
+                    <AlertDialogCancel className="cursor-pointer">
                       Cancel
                     </AlertDialogCancel>
                     <AlertDialogAction 

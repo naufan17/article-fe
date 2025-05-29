@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function Forbidden() {
@@ -13,12 +14,12 @@ export default function Forbidden() {
       <p className="text-lg">
         Page Forbidden
       </p>
-      <button
+      <Button
         onClick={() => router.back()}
         className="text-blue-500 cursor-pointer"
       >
         Go Back
-      </button>
+      </Button>
     </div>
   );
 }

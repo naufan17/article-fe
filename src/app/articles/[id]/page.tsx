@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import { use } from "react";
 import { useArticle } from "@/hooks/api/use-article";
 import { useArticleId } from "@/hooks/api/use-article-id";
 import { ContentArticle } from "@/components/content-article";
@@ -17,7 +17,7 @@ interface ArticleByIdPageProps {
 }
 
 export default function ArticleByIdPage({ params }: ArticleByIdPageProps) {
-  const { id } = React.use(params);
+  const { id } = use(params);
   const { data: article, isLoading } = useArticleId(id);
   const { data: articles, isLoading: isLoadingArticles } = useArticle(1, 3, undefined, undefined);
 

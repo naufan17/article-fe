@@ -42,7 +42,7 @@ export function CardArticle({
             {title}
           </CardTitle>
           <p className="text-sm sm:text-base font-normal text-slate-600 mt-1">
-            {content.split('\n\n')[0]}
+            {content.split('. ')[0].slice(0, 200) + (content.split('. ')[0].length < 200 && content.includes('. ') ? '.' : '')}
           </p>
           <div className="flex flex-wrap mt-2">
             {category.map((cat, index) => (
