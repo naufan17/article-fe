@@ -35,7 +35,7 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
     <>
       <nav className="absolute top-0 z-50 w-full bg-transparent">
         <div className="flex flex-wrap justify-between items-center mx-auto py-2 px-4 md:py-4 md:px-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <Link href="/articles" className="p-2 w-28 sm:w-40 h-auto flex items-center justify-center">
+          <Link href="/articles" className="p-2 w-36 sm:w-40 h-auto flex items-center justify-center">
             <Image 
               src="/logo-white.svg" 
               alt="Logo" 
@@ -102,9 +102,9 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
               placeholder="Search articles" 
               type="text"
               name="search"
-              value={title}
+              value={title ?? ""}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-white text-black col-span-3" 
+              className="w-full bg-white text-black col-span-3 text-sm placeholder:text-sm" 
             />
           </div>
         </div>

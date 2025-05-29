@@ -22,7 +22,7 @@ export function ContentPagination({ total, page, limit, setPage }: ContentPagina
           <PaginationPrevious 
             onClick={page === 1 ? undefined : () => setPage(page - 1)}
             aria-label={`Go to page ${page - 1}`}
-            className={page === 1 ? "pointer-events-none opacity-50" : ""}
+            className={page === 1 ? "opacity-50" : "cursor-pointer"}
             aria-disabled={page === 1}
           />
         </PaginationItem>
@@ -31,7 +31,7 @@ export function ContentPagination({ total, page, limit, setPage }: ContentPagina
             <PaginationLink
               onClick={() => setPage(pageNumber)}
               aria-label={`Go to page ${pageNumber}`}
-              className={pageNumber === page ? "border" : ""}
+              className={pageNumber === page ? "cursor-pointer border" : "cursor-pointer"}
               aria-current={pageNumber === page ? "page" : undefined}
             >
               {pageNumber}
@@ -42,7 +42,7 @@ export function ContentPagination({ total, page, limit, setPage }: ContentPagina
           <PaginationNext 
             onClick={page === Math.ceil(total / limit) ? undefined : () => setPage(page + 1)}
             aria-label={`Go to page ${page + 1}`}
-            className={page === Math.ceil(total / limit) ? "pointer-events-none opacity-50" : ""}
+            className={page === Math.ceil(total / limit) ? "opacity-50" : "cursor-pointer"}
             aria-disabled={page === Math.ceil(total / limit)}
           />
         </PaginationItem>

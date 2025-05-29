@@ -66,7 +66,7 @@ export default function AdminLayout({
             <NavUser color="black" />
           </div>
         </header>
-        <div className="bg-secondary min-h-screen">
+        <div className="bg-secondary h-full">
           {children}
         </div>
       </SidebarInset>

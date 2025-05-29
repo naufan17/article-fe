@@ -64,7 +64,7 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="shadow-none border-none sm:border">
         <CardHeader className="text-center justify-center px-0 sm:px-6">
-          <Link href="/articles" className="p-2 w-28 sm:w-40 h-auto flex items-center justify-center">
+          <Link href="/articles" className="p-2 w-36 sm:w-40 h-auto flex items-center justify-center">
             <Image 
               src="/logo-color.svg" 
               alt="Logo" 
