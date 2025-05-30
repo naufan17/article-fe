@@ -16,6 +16,8 @@ import {
   AlignJustify, 
   StrikethroughIcon,
   CodeIcon,
+  ListOrdered,
+  List,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -27,7 +29,16 @@ interface RichTextEditorProps {
 export const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        bulletList: {
+          keepMarks: true,
+          keepAttributes: false
+        },
+        orderedList: {
+          keepMarks: true,
+          keepAttributes: false
+        }
+      }),
       Underline,
       Link.configure({
         openOnClick: true
@@ -125,6 +136,23 @@ export const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
               aria-label="Justify"
             >
               <AlignJustify className="w-4 h-4" />
+            </Toggle>
+            <Separator orientation="vertical" className="mx-1 bg-slate-200" />
+            <Toggle
+              pressed={editor.isActive('bulletList')}
+              onPressedChange={() => editor.chain().focus().toggleBulletList().run()}
+              className="flex items-center"
+              aria-label="Bullet List"
+            >
+              <List className="w-4 h-4" />
+            </Toggle>
+            <Toggle
+              pressed={editor.isActive('orderedList')}
+              onPressedChange={() => editor.chain().focus().toggleOrderedList().run()}
+              className="flex items-center"
+              aria-label="Ordered List"
+            >
+              <ListOrdered className="w-4 h-4" />
             </Toggle>
             <Separator orientation="vertical" className="mx-1 bg-slate-200" />
             <Toggle 
