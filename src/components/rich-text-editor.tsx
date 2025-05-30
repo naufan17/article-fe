@@ -3,7 +3,6 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Underline from '@tiptap/extension-underline'
-// import Image from '@tiptap/extension-image'
 import TextAlign from '@tiptap/extension-text-align'
 import { Toggle } from "@/components/ui/toggle";
 import { 
@@ -11,13 +10,12 @@ import {
   Italic, 
   Underline as UnderlineIcon, 
   Link as LinkIcon, 
-  // Image as ImageIcon, 
   AlignLeft, 
   AlignCenter, 
   AlignRight, 
   AlignJustify, 
   StrikethroughIcon,
-  CodeIcon
+  CodeIcon,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -34,7 +32,6 @@ export const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       Link.configure({
         openOnClick: true
       }),
-      // Image,
       TextAlign.configure({
         types: ['heading', 'paragraph']
       })
@@ -96,39 +93,6 @@ export const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
             >
               <CodeIcon className="w-4 h-4" />
             </Toggle>
-            <Separator orientation="vertical" className="mx-1 bg-slate-200" />
-            <Toggle 
-              pressed={editor.isActive('heading', { level: 1 })}
-              onPressedChange={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-              className="flex items-center" 
-              aria-label="H1"
-            >
-              H1
-            </Toggle>
-            <Toggle 
-              pressed={editor.isActive('heading', { level: 2 })}
-              onPressedChange={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-              className="flex items-center" 
-              aria-label="H2"
-            >
-              H2
-            </Toggle>
-            <Toggle 
-              pressed={editor.isActive('heading', { level: 3 })}
-              onPressedChange={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-              className="flex items-center" 
-              aria-label="H3"
-            >
-              H3
-            </Toggle>
-            {/* <Toggle 
-              pressed={editor.isActive('image')}
-              onPressedChange={() => editor.chain().focus().toggleImage().run()}
-              className="flex items-center" 
-              aria-label="Image"
-            >
-              <ImageIcon className="w-4 h-4" />
-            </Toggle> */}
             <Separator orientation="vertical" className="mx-1 bg-slate-200" />
             <Toggle 
               pressed={editor.isActive('text-align', 'left')}

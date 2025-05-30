@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
-import { use } from "react";
+import { use, useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -60,15 +60,10 @@ export default function Edit({ params }: EditArticlePageProps) {
     handleSubmit,
     setValue,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      id: article?.id,
-      categoryId: article?.categoryId,
-      imageUrl: article?.imageUrl,
-      content: article?.content
-    }
+    resolver: zodResolver(formSchema)
   }); 
 
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,6 +113,18 @@ export default function Edit({ params }: EditArticlePageProps) {
       },
     });
   };
+
+  useEffect(() => {
+    if (article) {
+      reset({
+        id: article.id,
+        title: article.title,
+        content: article.content,
+        categoryId: article.categoryId,
+        imageUrl: article.imageUrl,
+      });
+    }
+  }, [article, reset]);
 
   return (
     <div className="bg-white mx-8 my-8 border rounded-xl">
