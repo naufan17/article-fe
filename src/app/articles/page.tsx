@@ -8,7 +8,7 @@ import { Hero } from "@/components/hero";
 import { Content } from "@/components/content";
 import { ContentSkeleton } from "@/components/content-skeleton";
 
-export default function UserArticlePage() {
+export default function ArticlePage() {
   const [page, setPage] = useState<number>(1);
   const [limit] = useState<number>(9);
   const [category, setCategory] = useState<string>();

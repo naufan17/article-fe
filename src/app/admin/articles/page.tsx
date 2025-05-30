@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 
-export default function UserArticlePage() {
+export default function ArticlePage() {
   const [page, setPage] = useState<number>(1);
   const [limit] = useState<number>(10);
   const [category, setCategory] = useState<string>();

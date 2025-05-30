@@ -37,7 +37,6 @@ const formSchema = z.object({
 export type FormData = z.infer<typeof formSchema>;
 
 interface EditArticlePageProps {
-  id: string
   params: Promise<{
     id: string
   }>

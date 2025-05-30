@@ -20,7 +20,7 @@ import { Label } from "@/components/ui/label";
 import { useCreateCategory } from "@/hooks/api/use-create-category";
 import { toast } from "sonner";
 
-export default function UserArticlePage() {
+export default function CategoryPage() {
   const [page, setPage] = useState<number>(1);
   const [limit] = useState<number>(15);
   const [search, setSearch] = useState<string | undefined>(undefined);
