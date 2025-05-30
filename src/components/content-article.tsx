@@ -34,7 +34,7 @@ export function ContentArticle({ article }: ContentArticleProps) {
       <span className="text-sm font-medium text-slate-600">
         {formatDate(article.createdAt)} ・ Created by {article.user.username}
       </span>
-      <h1 className="text-2xl sm:text-3xl font-semibold">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-center">
         {article.title}
       </h1>
       <div className="my-4">

@@ -22,7 +22,7 @@ export function CardArticle({
 }: CardArticleProps) {
   return (
     <Link href={`/articles/${id}`}>
-      <Card className="border-none shadow-none hover:shadow-sm hover:shadow-blue-200 cursor-pointer">
+      <Card className="border-none shadow-none hover:shadow-sm hover:shadow-blue-200 transition-shadow duration-300 ease-in-out cursor-pointer">
         <CardContent className="flex flex-col items-start overflow-auto">
           <Image 
             src={imageUrl}
