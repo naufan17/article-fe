@@ -55,7 +55,7 @@ export default function AdminLayout({
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="line-clamp-1 font-semibold text-lg">
+                  <BreadcrumbPage className="line-clamp-1 font-semibold text-base sm:text-lg">
                     Articles
                   </BreadcrumbPage>
                 </BreadcrumbItem>

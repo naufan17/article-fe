@@ -31,7 +31,7 @@ interface ContentArticleProps {
 export function ContentArticle({ article }: ContentArticleProps) {
   return (
     <div className="flex flex-col items-center justify-center mx-auto gap-4 py-8 px-4 md:py-12 md:px-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-      <span className="text-sm font-medium text-slate-600">
+      <span className="text-xs sm:text-sm font-medium text-slate-600 text-center">
         {formatDate(article.createdAt)} ・ Created by {article.user.username}
       </span>
       <h1 className="text-2xl sm:text-3xl font-semibold text-center">

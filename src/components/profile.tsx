@@ -32,21 +32,21 @@ export function Profile() {
             Profile
           </h1>
           <div className="flex flex-col justify-center items-center w-full gap-4">
-            <Avatar className="h-24 w-24 rounded-full my-4">
+            <Avatar className="h-20 sm:h-24 w-20 sm:w-24 rounded-full my-4">
               <AvatarImage src="https://github.com/shadcn.png" alt="Profile Image"/>
               <AvatarFallback className="rounded-lg">
                 {profile?.username?.charAt(0)?.toUpperCase() || "U"}
               </AvatarFallback>
             </Avatar>
             <div className="flex flex-row gap-2 w-full bg-gray-50 px-4 py-2 rounded-md border border-slate-200">
-              <span className="font-semibold">Username</span>
-              <span>:</span>
-              <span className="align-center">{profile?.username}</span>
+              <span className="text-sm sm:text-base font-semibold">Username</span>
+              <span className="text-sm sm:text-base">:</span>
+              <span className="text-sm sm:text-base">{profile?.username}</span>
             </div>
             <div className="flex flex-row gap-2 w-full bg-gray-50 px-4 py-2 rounded-md border border-slate-200">
-              <span className="font-semibold">Role</span>
-              <span>:</span>
-              <span className="align-center">{profile?.role}</span>
+              <span className="font-semibold text-sm sm:text-base">Role</span>
+              <span className="text-sm sm:text-base">:</span>
+              <span className="text-sm sm:text-base">{profile?.role}</span>
             </div>
             <Link href="/articles" className="w-full">
               <Button className="bg-blue-600 w-full cursor-pointer">

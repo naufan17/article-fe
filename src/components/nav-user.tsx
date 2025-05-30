@@ -5,6 +5,8 @@ import * as React from "react"
 import {
   BadgeCheck,
   LogOut,
+  Newspaper,
+  User,
 } from "lucide-react"
 import { 
   DropdownMenu, 
@@ -73,13 +75,13 @@ export function NavUser({ color }: { color: string }) {
                 <>
                   <Link href="/admin/profile">
                     <DropdownMenuItem>
-                      <BadgeCheck />
+                      <User />
                       Profile
                     </DropdownMenuItem>
                   </Link>
                   <Link href="/admin/articles">
                     <DropdownMenuItem>
-                      <BadgeCheck />
+                      <Newspaper />
                       Articles
                     </DropdownMenuItem>
                   </Link>
@@ -94,8 +96,8 @@ export function NavUser({ color }: { color: string }) {
                 </Link>
               )}
               <div onClick={handleLogout}>
-                <DropdownMenuItem>
-                  <LogOut />
+                <DropdownMenuItem className="text-red-600">
+                  <LogOut className="text-red-600"/>
                   Log out
                 </DropdownMenuItem>
               </div>            
