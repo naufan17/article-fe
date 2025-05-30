@@ -46,9 +46,10 @@ export function ContentArticle({ article }: ContentArticleProps) {
           className="w-full h-[240px] sm:h-[320px] md:h-[480px] object-cover rounded-lg"
         />
       </div>
-      <div className="text-sm sm:text-base font-normal whitespace-pre-line">
-        {article.content}
-      </div>
+      <div
+        className="text-sm sm:text-base font-normal prose prose-slate max-w-none"
+        dangerouslySetInnerHTML={{ __html: article.content }}
+      />
     </div>
   )
 }

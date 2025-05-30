@@ -40,10 +40,19 @@ export function CardArticle({
           </time>
           <CardTitle className="text-base sm:text-lg font-semibold text-slate-900 mt-2">
             {title}
+            <div
+              className="text-sm sm:text-base font-normal text-slate-600 mt-1 line-clamp-3"
+              dangerouslySetInnerHTML={{
+              __html: (() => {
+                const match = content.match(/^(.+?[.!?])(\s|$)/);
+                const text = match && match[1].length <= 100
+                ? match[1]
+                : content.slice(0, 100) + (content.length > 100 ? "..." : "");
+                return text;
+              })(),
+              }}
+            />
           </CardTitle>
-          <p className="text-sm sm:text-base font-normal text-slate-600 mt-1">
-            {content.split('. ')[0].slice(0, 200) + (content.split('. ')[0].length < 200 && content.includes('. ') ? '.' : '')}
-          </p>
           <div className="flex flex-wrap mt-2">
             {category.map((cat, index) => (
               <Badge key={index} className="text-xs sm:text-sm font-normal bg-blue-200 text-blue-900 px-2.5 py-0.75 rounded-full mr-2">

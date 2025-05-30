@@ -7,6 +7,13 @@ body {
   font-family: var(--font-inter);
 }
 
+.editor-wrapper .ProseMirror {
+  background-color: var(--color-secondary);
+  min-height: 400px;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

@@ -13,7 +13,6 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { useCategory } from "@/hooks/api/use-category";
 import { useUploadImage } from "@/hooks/api/use-upload-image";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,6 +26,7 @@ import Image from "next/image";
 import { useUpdateArticle } from "@/hooks/api/use-update-article";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ContentArticlePreview } from "@/components/content-article-preview";
+import { RichTextEditor } from "@/components/rich-text-editor";
 
 const formSchema = z.object({
   id: z.string(),
@@ -66,7 +66,8 @@ export default function Edit({ params }: EditArticlePageProps) {
     defaultValues: {
       id: article?.id,
       categoryId: article?.categoryId,
-      imageUrl: article?.imageUrl
+      imageUrl: article?.imageUrl,
+      content: article?.content
     }
   }); 
 
@@ -269,11 +270,9 @@ export default function Edit({ params }: EditArticlePageProps) {
                 {isLoading ? (
                   <div className="h-80 w-full bg-slate-200 rounded-md animate-pulse"/>
                 ) : (
-                  <Textarea 
-                    placeholder="Write something..."
-                    defaultValue={article?.content}
-                    {...register("content")}
-                    className="w-full h-80 px-3 py-2 text-sm"
+                  <RichTextEditor 
+                    content={watch("content") || article?.content} 
+                    onChange={(content: string) => setValue("content", content)} 
                   />
                 )}
                 {errors.content && (
@@ -296,9 +295,9 @@ export default function Edit({ params }: EditArticlePageProps) {
                 </DialogTrigger>
                 <div className="pr-4">
                   <ContentArticlePreview
-                    title={article?.title}
-                    content={article?.content}
-                    imageUrl={article?.imageUrl}
+                    title={watch("title") || article?.title}
+                    content={watch("content") || article?.content}
+                    imageUrl={watch("imageUrl") || article?.imageUrl}
                   />
                 </div>
               </Dialog>

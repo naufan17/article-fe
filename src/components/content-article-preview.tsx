@@ -8,17 +8,6 @@ interface ContentArticlePreviewProps {
 }
 
 export function ContentArticlePreview({ title, content, imageUrl }: ContentArticlePreviewProps) {
-  //   if (!title || !content || !imageUrl) {
-  //   return (
-  //     <DialogContent>
-  //       <DialogHeader>
-  //         <DialogTitle className="text-center text-red-500">Invalid article data</DialogTitle>
-  //       </DialogHeader>
-  //       <p className="text-center text-sm text-gray-500">Some article data is missing.</p>
-  //     </DialogContent>
-  //   );
-  // }
-
   return (
     <DialogContent className="min-w-[300px] sm:min-w-[600px] lg:min-w-[1000px] overflow-y-auto max-h-[90vh]">
       <DialogHeader>
@@ -35,9 +24,10 @@ export function ContentArticlePreview({ title, content, imageUrl }: ContentArtic
           className="w-auto h-[200px] sm:h-[280px] lg:h-[400px] object-cover rounded-lg"
         />
       </div>
-      <div className="text-xs sm:text-sm font-normal whitespace-pre-line">
-        {content}
-      </div>
+      <div         
+        className="text-sm sm:text-base font-normal prose prose-slate max-w-none"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </DialogContent>
   )
 }

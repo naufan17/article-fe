@@ -12,7 +12,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+// import { Textarea } from "@/components/ui/textarea";
 import { useCategory } from "@/hooks/api/use-category";
 import { useCreateArticle } from "@/hooks/api/use-create-article";
 import { useUploadImage } from "@/hooks/api/use-upload-image";
@@ -24,6 +24,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ContentArticlePreview } from "@/components/content-article-preview";
+import { RichTextEditor } from "@/components/rich-text-editor";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -217,11 +218,10 @@ export default function CreateArticlePage() {
                 )}
               </div>
               <div className="grid gap-2">
-              <Textarea 
-                placeholder="Write something..."
-                {...register("content")}
-                className="w-full h-80 px-3 py-2 text-sm"
-              />
+                <RichTextEditor 
+                  content={watch("content")} 
+                  onChange={(content: string) => setValue("content", content)} 
+                />
               {errors.content && (
                 <span className="text-red-500 text-sm">
                   {errors.content.message}
