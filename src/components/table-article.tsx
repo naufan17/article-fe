@@ -75,11 +75,11 @@ export function TableArticle({ data }: TableArticleProps) {
     <Table>
       <TableHeader className="bg-secondary border-t">
         <TableRow>
-          <TableHead className="font-semibold text-center">Thumbnail</TableHead>
-          <TableHead className="font-semibold text-center">Title</TableHead>
-          <TableHead className="font-semibold text-center">Category</TableHead>
-          <TableHead className="font-semibold text-center">Created At</TableHead>
-          <TableHead className="font-semibold text-center">Action</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Thumbnail</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Title</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Category</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Created At</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -94,11 +94,11 @@ export function TableArticle({ data }: TableArticleProps) {
                 className="h-24 w-32 object-cover rounded-lg" 
               />
             </TableCell>
-            <TableCell>
+            <TableCell className="text-xs sm:text-sm">
               {article.title.length > 50 ? article.title.slice(0, 50) + "..." : article.title}
             </TableCell>
-            <TableCell>{article.category.name}</TableCell>
-            <TableCell>{formatDate(article.createdAt)}</TableCell>
+            <TableCell className="text-xs sm:text-sm">{article.category.name}</TableCell>
+            <TableCell className="text-xs sm:text-sm">{formatDate(article.createdAt)}</TableCell>
             <TableCell>
               <Link href={`/articles/${article.id}`} className="text-blue-500">
                 <Button variant="ghost" className="cursor-pointer">

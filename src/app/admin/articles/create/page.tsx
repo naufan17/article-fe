@@ -110,7 +110,7 @@ export default function CreateArticlePage() {
             variant="link"
             className="text-black cursor-pointer"
             >
-            <ArrowLeft className="mr-2" strokeWidth={3} size={48} />
+            <ArrowLeft className="mr-2" strokeWidth={3} size={32} />
           </Button>
           Create an article
         </div>
@@ -181,7 +181,7 @@ export default function CreateArticlePage() {
                 type="text"
                 placeholder="Title"
                 {...register("title")}
-                className="w-full px-3 py-2"
+                className="w-full px-3 py-2 text-sm"
               />
               {errors.title && (
                 <span className="text-red-500 text-sm">
@@ -232,13 +232,24 @@ export default function CreateArticlePage() {
           <div className="flex items-center justify-end mt-6">
             <Dialog>
               <DialogTrigger asChild>
-              <Button 
-                type="button" 
-                variant="default"
-                className="px-4 py-2 bg-slate-200 text-black rounded-md hover:bg-slate-300 transition cursor-pointer"
-              >
-                Preview
-              </Button>
+                {watch("title") && watch("content") && watch("imageUrl") ? (
+                  <Button 
+                    type="button" 
+                    variant="default"
+                    className="px-4 py-2 bg-slate-200 text-black rounded-md hover:bg-slate-300 transition cursor-pointer"
+                  >
+                    Preview
+                  </Button>                  
+                ): (
+                  <Button 
+                    type="button" 
+                    variant="default"
+                    className="px-4 py-2 bg-slate-200 text-black rounded-md hover:bg-slate-300 transition cursor-pointer"
+                    disabled
+                  >
+                    Preview
+                  </Button>
+                )}
               </DialogTrigger>
               <div className="pr-4">
                 <ContentArticlePreview

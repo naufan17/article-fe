@@ -81,7 +81,7 @@ export default function CategoryPage() {
             name="Find category"
             value={search ?? ""}
             onChange={(e) => setSearch(e.target.value)}
-            className="bg-white text-black w-sm text-sm" 
+            className="bg-white text-black w-sm text-sm placeholder:text-sm" 
           />
           <Dialog>
             <DialogTrigger asChild>

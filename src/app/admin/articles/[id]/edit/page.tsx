@@ -225,7 +225,7 @@ export default function Edit({ params }: EditArticlePageProps) {
                   placeholder="Title"
                   defaultValue={article?.title}
                   {...register("title")}
-                  className="w-full px-3 py-2"
+                  className="w-full px-3 py-2 text-sm"
                 />
               )}
               {errors.title && (
