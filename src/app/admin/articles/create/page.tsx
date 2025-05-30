@@ -22,6 +22,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { ContentArticlePreview } from "@/components/content-article-preview";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -177,7 +179,7 @@ export default function CreateArticlePage() {
               <Input 
                 id="title"
                 type="text"
-                placeholder="title"
+                placeholder="Title"
                 {...register("title")}
                 className="w-full px-3 py-2"
               />
@@ -218,7 +220,7 @@ export default function CreateArticlePage() {
               <Textarea 
                 placeholder="Write something..."
                 {...register("content")}
-                className="w-full h-80 px-3 py-2"
+                className="w-full h-80 px-3 py-2 text-sm"
               />
               {errors.content && (
                 <span className="text-red-500 text-sm">
@@ -228,6 +230,24 @@ export default function CreateArticlePage() {
             </div>
           </div>
           <div className="flex items-center justify-end mt-6">
+            <Dialog>
+              <DialogTrigger asChild>
+              <Button 
+                type="button" 
+                variant="default"
+                className="px-4 py-2 bg-slate-200 text-black rounded-md hover:bg-slate-300 transition cursor-pointer"
+              >
+                Preview
+              </Button>
+              </DialogTrigger>
+              <div className="pr-4">
+                <ContentArticlePreview
+                  title={watch("title")}
+                  content={watch("content")}
+                  imageUrl={watch("imageUrl")}
+                />
+              </div>
+            </Dialog>
             <Button 
               type="submit" 
               variant="default"
