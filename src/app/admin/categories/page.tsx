@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { useState } from "react";
@@ -78,7 +79,7 @@ export default function CategoryPage() {
           <Input 
             placeholder="Search category" 
             type="text"
-            name="search"
+            name="Find category"
             value={search ?? ""}
             onChange={(e) => setSearch(e.target.value)}
             className="bg-white text-black w-sm" 

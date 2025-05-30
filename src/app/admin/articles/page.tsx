@@ -70,10 +70,10 @@ export default function ArticlePage() {
           <Input 
             placeholder="Search articles" 
             type="text"
-            name="search"
+            name="Find an article"
             value={title ?? ""}
             onChange={(e) => setTitle(e.target.value)}
-            className="bg-white text-black w-sm" 
+            className="bg-white text-black w-full sm:w-sm text-sm placeholder:text-sm" 
           />
         </div>
         <Link href="/admin/articles/create">

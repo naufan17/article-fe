@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-blue-600 text-white py-4 sm:py-6">
       <div className="flex flex-col sm:flex-row gap-1  justify-center items-center">
-        <Link href="/" className="p-2">
+        <Link href="/articles" className="p-2 w-34 sm:w-40">
           <Image 
           src="/logo-white.svg" 
           alt="Logo" 

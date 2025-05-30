@@ -6,7 +6,9 @@ export default function ProfilePage() {
   return (
     <>
       <Navbar />
-      <Profile />
+      <div className="flex flex-col items-center justify-center h-screen -my-18 md:-my-20">
+        <Profile />
+      </div>
       <Footer />
     </>
   )

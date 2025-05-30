@@ -43,7 +43,7 @@ export function ContentArticle({ article }: ContentArticleProps) {
           alt={article.title} 
           width={800} 
           height={600}
-          className="w-full h-[480px] object-cover rounded-lg"
+          className="w-full h-[240px] sm:h-[400px] md:h-[480px] object-cover rounded-lg"
         />
       </div>
       <div className="text-sm sm:text-base font-normal whitespace-pre-line">
