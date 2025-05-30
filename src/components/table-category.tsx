@@ -108,22 +108,22 @@ export function TableCategory({ data }: TableCategoryProps) {
     <Table>
       <TableHeader className="bg-secondary border-t">
         <TableRow>
-          <TableHead className="font-semibold text-center">Category</TableHead>
-          <TableHead className="font-semibold text-center">Created At</TableHead>
-          <TableHead className="font-semibold text-center">Action</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Category</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Created At</TableHead>
+          <TableHead className="font-semibold text-center text-xs sm:text-sm">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {data.map((category) => (
           <TableRow key={category.id} className="text-center">
-            <TableCell>{category.name}</TableCell>
-            <TableCell>{formatDate(category.createdAt)}</TableCell>
+            <TableCell className="text-xs sm:text-sm">{category.name}</TableCell>
+            <TableCell className="text-xs sm:text-sm">{formatDate(category.createdAt)}</TableCell>
             <TableCell>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button 
                     variant="ghost" 
-                    className="cursor-pointer"
+                    className="cursor-pointer text-xs sm:text-sm"
                     onClick={() => {
                       setUpdateCategorForm({
                         id: category.id,
@@ -150,6 +150,7 @@ export function TableCategory({ data }: TableCategoryProps) {
                           name="name"
                           value={updateCategorForm.name}
                           onChange={handleInputChange}
+                          className="text-sm"
                           required
                         />
                       </div>
