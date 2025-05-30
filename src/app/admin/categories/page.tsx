@@ -70,7 +70,7 @@ export default function UserArticlePage() {
             {isLoading ? (
               "Loading..."
             ) : (
-              categories?.data && categories.data.length === 0 ? "No categories found." : `Total categories: ${categories.totalData}`
+              categories?.data && categories.data.length === 0 ? "No categories found" : `Total categories: ${categories.totalData}`
             )}
           </div>
         </div>

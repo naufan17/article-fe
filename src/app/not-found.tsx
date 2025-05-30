@@ -9,7 +9,7 @@ export default function NotFound() {
       <p className="text-lg">
         Page Not Found
       </p>
-      <Link href="/" className="text-blue-500 cursor-pointer">
+      <Link href="/articles" className="text-blue-500 cursor-pointer">
         Go Home
       </Link>
     </div>

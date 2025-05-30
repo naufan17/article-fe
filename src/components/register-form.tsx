@@ -4,6 +4,9 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useForm, Controller } from "react-hook-form"
+import { z } from "zod"
 import {
   Card,
   CardContent,
@@ -21,11 +24,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { z } from "zod"
-import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRegister } from "@/hooks/api/use-register"
-import { useRouter } from "next/navigation"
 import { Alert, AlertTitle } from "@/components/ui/alert"
 
 const formSchema = z.object({

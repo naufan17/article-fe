@@ -1,4 +1,4 @@
-import axiosInstance from "@/lib/axios";
+import axiosInstance from "@/lib/axiosinstance";
 import { useMutation } from "@tanstack/react-query";
 
 export const useRegister = () => {

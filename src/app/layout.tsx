@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-white antialiased ${inter.variable} font-sans`}>
+      <body className={`min-h-screen w-full bg-white antialiased ${inter.variable} font-sans`}>
         <Providers>
           <Toaster />
           <main>

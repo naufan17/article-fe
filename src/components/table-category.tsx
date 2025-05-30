@@ -7,7 +7,7 @@ import {
   TableHeader, 
   TableRow 
 } from "@/components/ui/table";
-import { formatDate } from "@/lib/formatdate";
+import { formatDate } from "@/utils/formatdate";
 import { useDeleteCategory } from "@/hooks/api/use-delete-category";
 import { useUpdateCategory } from "@/hooks/api/use-update-category";
 import { Edit, Trash2 } from "lucide-react";

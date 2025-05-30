@@ -168,13 +168,6 @@ export default function Edit({ params }: EditArticlePageProps) {
                           <span className="text-green-500 text-sm">
                             Success
                           </span>
-                          {/* <Image
-                            src={watch("imageUrl")}
-                            alt="Thumbnail Preview"
-                            width={240}
-                            height={200}
-                            className="mt-2 w-full object-cover rounded"
-                          />                   */}
                         </>
                       ) : article?.imageUrl ? (
                         <>

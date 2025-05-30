@@ -1,5 +1,3 @@
-'use client'
-
 import { CardArticle } from "@/components/card-article";
 
 interface ContentProps {

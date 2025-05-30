@@ -3,16 +3,8 @@
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "@/store/store";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // refetchOnWindowFocus: false,
-      // staleTime: 1000 * 60 * 5,
-    },
-  }
-});
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/queryclient";
 
 export function Providers({
   children,

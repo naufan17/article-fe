@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "@/lib/axios";
+import axiosInstance from "@/lib/axiosinstance";
 
 export const useCategory = (page?: number, limit?: number, title?: string) => {
   return useQuery({

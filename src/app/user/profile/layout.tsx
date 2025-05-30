@@ -5,9 +5,5 @@ export default function ProfileLayout({
 }: { 
   children: React.ReactNode 
 }) {
-  return (
-    <UserGuard>
-      {children}
-    </UserGuard>
-  )
+  return <UserGuard>{children}</UserGuard>
 }

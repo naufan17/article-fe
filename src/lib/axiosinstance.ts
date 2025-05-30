@@ -1,6 +1,7 @@
+import Axios, { type AxiosInstance } from 'axios';
+import router from 'next/router';
 import { setLogout } from '@/store/slices/auth-slice';
 import { store } from '@/store/store';
-import Axios, { type AxiosInstance } from 'axios';
 
 const axiosInstance: AxiosInstance = Axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -33,7 +34,7 @@ axiosInstance.interceptors.response.use(
       error.response?.data.message === 'jwt signature is required'
     ) {
       store.dispatch(setLogout())
-      window.location.href = '/login'
+      router.push('/login')
     }
 
     return Promise.reject(error);
