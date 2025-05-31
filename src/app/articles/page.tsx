@@ -12,7 +12,7 @@ import { useDebounce } from "@/hooks/api/use-debounce";
 import { RootState } from "@/store/store";
 
 export default function ArticlePage() {
-  const page = useSelector((state: RootState) => state.page.currentPage['articles']);
+  const page: number = useSelector((state: RootState) => state.page.currentPage['articles']);
   const [limit] = useState<number>(9);
   const [category, setCategory] = useState<string>();
   const [title, setTitle] = useState<string | undefined>(undefined);

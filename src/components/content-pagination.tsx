@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store";
 import { 
   Pagination, 
   PaginationContent, 
@@ -17,7 +18,7 @@ interface ContentPaginationProps {
 }
 
 export function ContentPagination({ total, page, limit, pageType }: ContentPaginationProps) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   
   return (
     <Pagination className="mt-4">

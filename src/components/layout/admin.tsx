@@ -35,7 +35,7 @@ export default function AdminLayout({
 }: { 
   children: React.ReactNode 
 }) {
-  const pathname = usePathname();
+  const pathname: string = usePathname();
 
   const data = {
     navMain: navMain.map(item => ({

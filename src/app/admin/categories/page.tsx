@@ -23,7 +23,7 @@ import { Label } from "@/components/ui/label";
 import { useCreateCategory } from "@/hooks/api/use-create-category";
 
 export default function CategoryPage() {
-  const page = useSelector((state: RootState) => state.page.currentPage['categories']);
+  const page: number = useSelector((state: RootState) => state.page.currentPage['categories']);
   const [limit] = useState<number>(15);
   const [search, setSearch] = useState<string | undefined>(undefined);
   const { data: categories, isLoading } = useCategory(page, limit, search);

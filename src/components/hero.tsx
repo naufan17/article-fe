@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,7 +30,7 @@ interface CategoryProps {
 }
 
 export function Hero({ data, category, setCategory, title, setTitle }: CategoryProps) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const isAuthenticated: boolean = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   return (

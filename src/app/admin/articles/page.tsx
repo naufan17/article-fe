@@ -4,7 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { useArticle } from "@/hooks/api/use-article";
 import { useCategory } from "@/hooks/api/use-category";
 import { TableArticle } from "@/components/table-article";
@@ -23,7 +23,7 @@ import { useDebounce } from "@/hooks/api/use-debounce";
 import { setPage } from "@/store/slices/page-slice";
 
 export default function ArticlePage() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const page = useSelector((state: RootState) => state.page.currentPage['articles']);
   const [limit] = useState<number>(10);
   const [category, setCategory] = useState<string>();

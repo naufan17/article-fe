@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import * as React from "react"
 import {
-  BadgeCheck,
   LogOut,
   Newspaper,
   User,
@@ -23,13 +21,13 @@ import {
 import Link from "next/link"
 import { setLogout } from "@/store/slices/auth-slice"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch } from "@/store/store"
+import { AppDispatch, RootState } from "@/store/store"
 import { useRouter } from "next/navigation"
 import { useProfile } from "@/hooks/api/use-profile"
 
 export function NavUser({ color }: { color: string }) {
   const dispatch = useDispatch<AppDispatch>()
-  const role = useSelector((state: any) => state.auth.role)
+  const role: 'User' | 'Admin' | null = useSelector((state: RootState) => state.auth.role)
   const router = useRouter()
   const { data: profile, isLoading } = useProfile()
 
@@ -90,7 +88,7 @@ export function NavUser({ color }: { color: string }) {
               {role === "User" && (
                 <Link href="/user/profile">
                   <DropdownMenuItem>
-                    <BadgeCheck />
+                    <User />
                     Profile
                   </DropdownMenuItem>
                 </Link>
