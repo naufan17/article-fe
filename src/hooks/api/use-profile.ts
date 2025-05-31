@@ -7,6 +7,7 @@ export const useProfile = () => {
     queryFn: async () => {
       const response = await axiosInstance.get("/auth/profile");
       return response.data;
-    }
+    },
+    staleTime: 1000 * 60 * 5
   });
 }

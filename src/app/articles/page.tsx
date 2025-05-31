@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Content } from "@/components/content";
 import { ContentSkeleton } from "@/components/content-skeleton";
-import { useDebounce } from "@/hooks/api/use-debounce";
+import { useDebounce } from "@/hooks/use-debounce";
 import { RootState } from "@/store/store";
 
 export default function ArticlePage() {

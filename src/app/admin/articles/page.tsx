@@ -19,7 +19,7 @@ import {
   DropdownMenuLabel, 
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
-import { useDebounce } from "@/hooks/api/use-debounce";
+import { useDebounce } from "@/hooks/use-debounce";
 import { setPage } from "@/store/slices/page-slice";
 import { Skeleton } from "@/components/ui/skeleton";
 

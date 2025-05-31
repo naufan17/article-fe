@@ -13,6 +13,7 @@ export const useCategory = (page?: number, limit?: number, search?: string) => {
         },
       });
       return response.data;
-    }
+    },
+    staleTime: 1000 * 60 * 5
   });
 }

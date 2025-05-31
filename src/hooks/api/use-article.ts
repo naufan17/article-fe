@@ -14,6 +14,7 @@ export const useArticle = (page: number, limit: number, title?: string, category
         },
       });
       return response.data;
-    }
+    },
+    staleTime: 1000 * 60 * 5
   });
 }
