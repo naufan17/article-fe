@@ -18,6 +18,8 @@ import {
   CodeIcon,
   ListOrdered,
   List,
+  Undo as UndoIcon,
+  Redo as RedoIcon
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -64,6 +66,23 @@ export const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       {editor && (
         <>
           <div className="flex bg-white border-b border-slate-200 gap-1 p-1 flex-wrap">
+            <Toggle
+              pressed={editor.isActive('undo')}
+              onPressedChange={() => editor.chain().focus().undo().run()}
+              className="flex items-center"
+              aria-label="Undo"
+            >
+              <UndoIcon className="w-4 h-4" />
+            </Toggle>
+            <Toggle
+              pressed={editor.isActive('redo')}
+              onPressedChange={() => editor.chain().focus().redo().run()}
+              className="flex items-center"
+              aria-label="Redo"
+            >
+              <RedoIcon className="w-4 h-4" />
+            </Toggle>
+            <Separator orientation="vertical" className="mx-1 bg-slate-200"/>
             <Toggle 
               pressed={editor.isActive('bold')}
               onPressedChange={() => editor.chain().focus().toggleBold().run()}
@@ -169,7 +188,7 @@ export const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
           </div>
           <EditorContent editor={editor} className="editor-wrapper"/>
           <div className="text-sm p-4 font-medium text-slate-800">
-           {editor.state.doc.content.size -2 } words
+            {editor.state.doc.content.size -2 } words
           </div>
         </>
       )}

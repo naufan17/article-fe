@@ -64,7 +64,7 @@ export default function CategoryPage() {
 
   return (
     <>
-      <div className="bg-white mx-8 my-8 border rounded-xl">
+      <div className="bg-white mx-4 sm:mx-8 my-4 sm:my-8 border rounded-xl">
         <div className="flex items-center justify-between p-4 border-b">
           <div className="text-sm sm:text-base font-semibold">
             {isLoading ? (
