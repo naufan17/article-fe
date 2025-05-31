@@ -5,6 +5,7 @@ import { persistStore, persistReducer, type Persistor } from 'redux-persist'
 import { encryptTransform } from 'redux-persist-transform-encrypt'
 import storage from 'redux-persist/lib/storage'
 import authSlice from '@/store/slices/auth-slice'
+import pageSlice from '@/store/slices/page-slice'
 
 const persistConfig: {
   key: string
@@ -26,7 +27,8 @@ const persistConfig: {
 }
 
 const rootReducer = combineReducers({
-  auth: authSlice
+  auth: authSlice,
+  page: pageSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

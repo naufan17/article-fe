@@ -4,7 +4,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { NavUser } from "@/components/nav-user";
+import { setPage } from "@/store/slices/page-slice";
 
 interface CategoryProps {
   data: {
@@ -25,11 +27,11 @@ interface CategoryProps {
   setCategory: (category: string | undefined) => void;
   title: string | undefined;
   setTitle: (title: string | undefined) => void;
-  setPage: (page: number) => void;
 }
 
-export function Hero({ data, category, setCategory, title, setTitle, setPage }: CategoryProps) {
-  const isAuthenticated: boolean = useSelector((state: any) => state.auth.isAuthenticated);
+export function Hero({ data, category, setCategory, title, setTitle }: CategoryProps) {
+  const dispatch = useDispatch();
+  const isAuthenticated: boolean = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   return (
     <>
@@ -90,7 +92,7 @@ export function Hero({ data, category, setCategory, title, setTitle, setPage }: 
                   checked={category === cat.id}
                   onCheckedChange={(checked) => {
                     setCategory(checked ? cat.id : undefined)
-                    setPage(1)
+                    dispatch(setPage({ key: 'articles', page: 1 }))
                   }}
                 >
                   {cat.name}

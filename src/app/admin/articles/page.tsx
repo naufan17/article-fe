@@ -3,6 +3,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 import { useArticle } from "@/hooks/api/use-article";
 import { useCategory } from "@/hooks/api/use-category";
 import { TableArticle } from "@/components/table-article";
@@ -18,9 +20,11 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 import { useDebounce } from "@/hooks/api/use-debounce";
+import { setPage } from "@/store/slices/page-slice";
 
 export default function ArticlePage() {
-  const [page, setPage] = useState<number>(1);
+  const dispatch = useDispatch();
+  const page = useSelector((state: RootState) => state.page.currentPage['articles']);
   const [limit] = useState<number>(10);
   const [category, setCategory] = useState<string>();
   const [title, setTitle] = useState<string | undefined>(undefined);
@@ -61,7 +65,7 @@ export default function ArticlePage() {
                 checked={category === cat.id}
                 onCheckedChange={(checked) => {
                   setCategory(checked ? cat.id : undefined)
-                  setPage(1)
+                  dispatch(setPage({ key: "articles", page: 1 }))
                 }}
               >
                 {cat.name}
@@ -100,7 +104,7 @@ export default function ArticlePage() {
         <>
           <TableArticle data={articles?.data ?? []}/>
           <div className="my-4">
-            <ContentPagination total={articles.total} page={articles.page} limit={articles.limit} setPage={setPage} />
+            <ContentPagination total={articles.total} page={articles.page} limit={articles.limit} pageType="articles" />
           </div>
         </>
       )}

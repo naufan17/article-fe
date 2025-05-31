@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import { 
   Pagination, 
   PaginationContent, 
@@ -6,21 +7,24 @@ import {
   PaginationNext, 
   PaginationPrevious 
 } from "@/components/ui/pagination";
+import { setPage } from "@/store/slices/page-slice";
 
 interface ContentPaginationProps {
   total: number;
   page: number;
   limit: number;
-  setPage: (page: number) => void;
+  pageType: 'articles' | 'categories'
 }
 
-export function ContentPagination({ total, page, limit, setPage }: ContentPaginationProps) {
+export function ContentPagination({ total, page, limit, pageType }: ContentPaginationProps) {
+  const dispatch = useDispatch();
+  
   return (
     <Pagination className="mt-4">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious 
-            onClick={page === 1 ? undefined : () => setPage(page - 1)}
+            onClick={page === 1 ? undefined : () => dispatch(setPage({ key: pageType, page: page - 1 }))}
             aria-label={`Go to page ${page - 1}`}
             className={page === 1 ? "opacity-50" : "cursor-pointer"}
             aria-disabled={page === 1}
@@ -29,7 +33,7 @@ export function ContentPagination({ total, page, limit, setPage }: ContentPagina
         {Array.from({ length: Math.ceil(total / limit) }, (_, index) => index + 1).map((pageNumber) => (
           <PaginationItem key={pageNumber}>
             <PaginationLink
-              onClick={() => setPage(pageNumber)}
+              onClick={() => dispatch(setPage({ key: pageType, page: pageNumber }))}
               aria-label={`Go to page ${pageNumber}`}
               className={pageNumber === page ? "cursor-pointer border" : "cursor-pointer"}
               aria-current={pageNumber === page ? "page" : undefined}
@@ -40,7 +44,7 @@ export function ContentPagination({ total, page, limit, setPage }: ContentPagina
         ))}
         <PaginationItem>
           <PaginationNext 
-            onClick={page === Math.ceil(total / limit) ? undefined : () => setPage(page + 1)}
+            onClick={page === Math.ceil(total / limit) ? undefined : () => dispatch(setPage({ key: pageType, page: page + 1 }))}
             aria-label={`Go to page ${page + 1}`}
             className={page === Math.ceil(total / limit) ? "opacity-50" : "cursor-pointer"}
             aria-disabled={page === Math.ceil(total / limit)}
