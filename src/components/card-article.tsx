@@ -45,9 +45,9 @@ export function CardArticle({
               dangerouslySetInnerHTML={{
               __html: (() => {
                 const match = content.match(/^(.+?[.!?])(\s|$)/);
-                const text = match && match[1].length <= 100
+                const text = match && match[1].length <= 200
                 ? match[1]
-                : content.slice(0, 100) + (content.length > 100 ? "..." : "");
+                : content.slice(0, 200) + (content.length > 200 ? "..." : "");
                 return text;
               })(),
               }}

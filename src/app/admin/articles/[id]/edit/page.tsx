@@ -27,6 +27,7 @@ import { useUpdateArticle } from "@/hooks/api/use-update-article";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ContentArticlePreview } from "@/components/content-article-preview";
 import { RichTextEditor } from "@/components/rich-text-editor";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const formSchema = z.object({
   id: z.string(),
@@ -146,7 +147,7 @@ export default function Edit({ params }: EditArticlePageProps) {
             <div className="grid gap-2">
               <Label htmlFor="thumbnail">Thumbnail</Label>
               {isLoading ? (
-                <div className="h-40 w-52 bg-slate-200 rounded-md animate-pulse"/> 
+                <Skeleton className="h-40 w-52 rounded-md"/>
               ) : (
                 <>
                   <Label
@@ -225,7 +226,7 @@ export default function Edit({ params }: EditArticlePageProps) {
             <div className="grid gap-2 w-full">
               <Label htmlFor="title">Title</Label>
               {isLoading ? (
-                <div className="h-10 w-full bg-slate-200 rounded-md animate-pulse"/>
+                <Skeleton className="h-10 w-full" />
               ) : (
                 <Input 
                   id="title"
@@ -245,7 +246,7 @@ export default function Edit({ params }: EditArticlePageProps) {
             <div className="grid gap-2">
               <Label htmlFor="category" >Category</Label>
                 {isLoading ? (
-                  <div className="h-10 w-40 bg-slate-200 rounded-md animate-pulse"/>
+                  <Skeleton className="h-10" />
                 ) : (
                   <Select
                     value={watch("categoryId") || article?.categoryId}
@@ -275,7 +276,7 @@ export default function Edit({ params }: EditArticlePageProps) {
               </div>
               <div className="grid gap-2">
                 {isLoading ? (
-                  <div className="h-80 w-full bg-slate-200 rounded-md animate-pulse"/>
+                  <Skeleton className="h-80 w-full" />
                 ) : (
                   <RichTextEditor 
                     content={watch("content") || article?.content} 

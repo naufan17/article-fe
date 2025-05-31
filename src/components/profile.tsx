@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useProfile } from "@/hooks/api/use-profile"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export function Profile() {
   const { data: profile, isLoading } = useProfile()
@@ -16,14 +17,14 @@ export function Profile() {
             Profile
           </h2>
           <div className="flex flex-col justify-center items-center w-full gap-4">
-            <div className="h-24 w-24 rounded-full my-4 bg-slate-200 animate-pulse" />
+            <Skeleton className="h-24 w-24 rounded-full my-4" />
             <div className="flex flex-row gap-2 w-full bg-gray-50 px-4 py-2 rounded-md border border-slate-200">
-              <div className="h-6 bg-slate-200 rounded-md animate-pulse"/>
+              <Skeleton className="h-6" />
             </div>
             <div className="flex flex-row gap-2 w-full bg-gray-50 px-4 py-2 rounded-md border border-slate-200">
-              <div className="h-6 bg-slate-200 rounded-md animate-pulse"/>
+              <Skeleton className="h-6" />
             </div>
-            <div className="h-6 bg-slate-200 rounded-md animate-pulse"/>
+            <Skeleton className="h-6" />
           </div>
         </>
       ) : (

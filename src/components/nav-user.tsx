@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/store/store"
 import { useRouter } from "next/navigation"
 import { useProfile } from "@/hooks/api/use-profile"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export function NavUser({ color }: { color: string }) {
   const dispatch = useDispatch<AppDispatch>()
@@ -40,8 +41,8 @@ export function NavUser({ color }: { color: string }) {
     <>
       {isLoading ? (
         <div className="flex items-center">
-          <div className="h-6 sm:h-8 w-6 sm:w-8 rounded-full mr-2 bg-slate-200 animate-pulse"/>
-          <data className="h-2 w-16 rounded-md bg-slate-200 animate-pulse"/>
+          <Skeleton className="h-6 sm:h-8 w-6 sm:w-8 rounded-full mr-2" />
+          <Skeleton className="h-2 w-16" />
         </div>
       ) : (
         <DropdownMenu>
