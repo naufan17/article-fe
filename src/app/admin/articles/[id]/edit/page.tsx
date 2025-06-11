@@ -13,17 +13,17 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import { useCategory } from "@/hooks/api/use-category";
-import { useUploadImage } from "@/hooks/api/use-upload-image";
+import { useCategory } from "@/lib/api/use-category";
+import { useUploadImage } from "@/lib/api/use-upload-image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, Check, CircleAlert, ImagePlus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { useArticleId } from "@/hooks/api/use-article-id";
+import { useArticleId } from "@/lib/api/use-article-id";
 import Image from "next/image";
-import { useUpdateArticle } from "@/hooks/api/use-update-article";
+import { useUpdateArticle } from "@/lib/api/use-update-article";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ContentArticlePreview } from "@/components/content-article-preview";
 import { RichTextEditor } from "@/components/rich-text-editor";

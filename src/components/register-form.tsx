@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRegister } from "@/hooks/api/use-register"
+import { useRegister } from "@/lib/api/use-register"
 import { Alert, AlertTitle } from "@/components/ui/alert"
 
 const formSchema = z.object({

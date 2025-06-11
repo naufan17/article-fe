@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { useProfile } from "@/hooks/api/use-profile"
+import { useProfile } from "@/lib/api/use-profile"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"

@@ -16,7 +16,8 @@ export default function Forbidden() {
       </p>
       <Button
         onClick={() => router.back()}
-        className="text-blue-500 cursor-pointer"
+        variant="link"
+        className="text-blue-500 cursor-pointer text-md"
       >
         Go Back
       </Button>

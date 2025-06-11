@@ -1,3 +1,5 @@
+'use client';
+
 import Axios, { type AxiosInstance } from 'axios';
 import router from 'next/router';
 import { setLogout } from '@/store/slices/auth-slice';

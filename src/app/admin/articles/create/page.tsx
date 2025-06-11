@@ -13,9 +13,9 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 // import { Textarea } from "@/components/ui/textarea";
-import { useCategory } from "@/hooks/api/use-category";
-import { useCreateArticle } from "@/hooks/api/use-create-article";
-import { useUploadImage } from "@/hooks/api/use-upload-image";
+import { useCategory } from "@/lib/api/use-category";
+import { useCreateArticle } from "@/lib/api/use-create-article";
+import { useUploadImage } from "@/lib/api/use-upload-image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, Check, CircleAlert, ImagePlus } from "lucide-react";
 import { useRouter } from "next/navigation";

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { RootState } from "@/store/store";
-import { useCategory } from "@/hooks/api/use-category";
+import { useCategory } from "@/lib/api/use-category";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
@@ -20,7 +20,7 @@ import {
   DialogClose 
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { useCreateCategory } from "@/hooks/api/use-create-category";
+import { useCreateCategory } from "@/lib/api/use-create-category";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function CategoryPage() {

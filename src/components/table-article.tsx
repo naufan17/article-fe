@@ -8,10 +8,10 @@ import {
   TableHeader, 
   TableRow 
 } from "@/components/ui/table";
-import { formatDate } from "@/utils/formatdate";
+import { formatDate } from "@/lib/utils/formatdate";
 import { Edit, Eye, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useDeleteArticle } from "@/hooks/api/use-delete-article";
+import { useDeleteArticle } from "@/lib/api/use-delete-article";
 import { toast } from "sonner";
 import { 
   AlertDialog, 

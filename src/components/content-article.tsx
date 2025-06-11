@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { formatDate } from "@/utils/formatdate";
+import { formatDate } from "@/lib/utils/formatdate";
 
 interface ContentArticleProps {
   article: {    

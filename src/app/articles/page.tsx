@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useArticle } from "@/hooks/api/use-article";
-import { useCategory } from "@/hooks/api/use-category";
+import { useArticle } from "@/lib/api/use-article";
+import { useCategory } from "@/lib/api/use-category";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Content } from "@/components/content";

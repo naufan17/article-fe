@@ -23,7 +23,7 @@ import { setLogout } from "@/store/slices/auth-slice"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/store/store"
 import { useRouter } from "next/navigation"
-import { useProfile } from "@/hooks/api/use-profile"
+import { useProfile } from "@/lib/api/use-profile"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export function NavUser({ color }: { color: string }) {
