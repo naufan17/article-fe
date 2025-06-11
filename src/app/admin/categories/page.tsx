@@ -1,9 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import { RootState } from "@/store/store";
 import { useCategory } from "@/lib/api/use-category";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,9 +20,10 @@ import {
 import { Label } from "@/components/ui/label";
 import { useCreateCategory } from "@/lib/api/use-create-category";
 import { Skeleton } from "@/components/ui/skeleton";
+import { usePageStore } from "@/stores/use-page-store";
 
 export default function CategoryPage() {
-  const page: number = useSelector((state: RootState) => state.page.currentPage['categories']);
+  const page = usePageStore((state) => state.currentPage['categories']);
   const [limit] = useState<number>(15);
   const [search, setSearch] = useState<string | undefined>(undefined);
   const { data: categories, isLoading } = useCategory(page, limit, search);

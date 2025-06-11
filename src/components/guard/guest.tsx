@@ -2,16 +2,14 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux"
-import { RootState } from "@/store/store";
+import { useAuthStore } from "@/stores/use-auth-store";
 
 export default function GuestGuard({ 
   children 
 }: { 
   children: React.ReactNode 
 }) {
-  const isAuthenticated: boolean = useSelector((state: RootState) => state.auth.isAuthenticated);
-  const role: 'User' | 'Admin' | null = useSelector((state: RootState) => state.auth.role);
+  const { isAuthenticated, role } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {

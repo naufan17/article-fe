@@ -6,10 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
-import { useDispatch } from "react-redux"
 import { cn } from "@/lib/utils"
-import { setLogin } from "@/store/slices/auth-slice"
-import { AppDispatch } from "@/store/store"
+import { useAuthStore } from "@/stores/use-auth-store"
 import { AlertCircle } from "lucide-react"
 import {
   Card,
@@ -34,7 +32,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const dispatch = useDispatch<AppDispatch>()
+  const { setLogin } = useAuthStore()
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const loginUser = useLogin()
@@ -54,7 +52,7 @@ export function LoginForm({
       onSuccess: (response) => {
         setError(null)
         setLoading(false)
-        dispatch(setLogin({ token: response.data.token, role: response.data.role }))
+        setLogin({ token: response.data.token, role: response.data.role })
       },
       onError: (error: any) => {
         setLoading(false)

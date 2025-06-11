@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import Link from "next/link";
 import Image from "next/image";
 import { NavUser } from "@/components/nav-user";
-import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/stores/use-auth-store";
 
 export function Navbar() {
-  const isAuthenticated: boolean = useSelector((state: any) => state.auth.isAuthenticated);
+  const { isAuthenticated } = useAuthStore();
   
   return (
     <nav className="relative top-0 z-50 w-full bg-transparent border-b border-slate-200">

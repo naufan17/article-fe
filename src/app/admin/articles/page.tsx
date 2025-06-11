@@ -3,8 +3,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/store/store";
 import { useArticle } from "@/lib/api/use-article";
 import { useCategory } from "@/lib/api/use-category";
 import { TableArticle } from "@/components/table-article";
@@ -20,12 +18,12 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 import { useDebounce } from "@/hooks/use-debounce";
-import { setPage } from "@/store/slices/page-slice";
 import { Skeleton } from "@/components/ui/skeleton";
+import { usePageStore } from "@/stores/use-page-store";
 
 export default function ArticlePage() {
-  const dispatch = useDispatch<AppDispatch>();
-  const page = useSelector((state: RootState) => state.page.currentPage['articles']);
+  const { setPage } = usePageStore();
+  const page = usePageStore((state) => state.currentPage['articles']);
   const [limit] = useState<number>(10);
   const [category, setCategory] = useState<string>();
   const [title, setTitle] = useState<string | undefined>(undefined);
@@ -66,7 +64,7 @@ export default function ArticlePage() {
                 checked={category === cat.id}
                 onCheckedChange={(checked) => {
                   setCategory(checked ? cat.id : undefined)
-                  dispatch(setPage({ key: "articles", page: 1 }))
+                  setPage({ key: "articles", page: 1 })
                 }}
               >
                 {cat.name}

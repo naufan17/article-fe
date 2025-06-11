@@ -19,21 +19,18 @@ import {
   AvatarImage 
 } from "@/components/ui/avatar"
 import Link from "next/link"
-import { setLogout } from "@/store/slices/auth-slice"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "@/store/store"
 import { useRouter } from "next/navigation"
 import { useProfile } from "@/lib/api/use-profile"
 import { Skeleton } from "@/components/ui/skeleton"
+import { useAuthStore } from "@/stores/use-auth-store"
 
 export function NavUser({ color }: { color: string }) {
-  const dispatch = useDispatch<AppDispatch>()
-  const role: 'User' | 'Admin' | null = useSelector((state: RootState) => state.auth.role)
-  const router = useRouter()
+  const { role, setLogout } = useAuthStore()
   const { data: profile, isLoading } = useProfile()
+  const router = useRouter()
 
   const handleLogout = () => {
-    dispatch(setLogout())
+    setLogout()
     router.push("/login")
   }
 

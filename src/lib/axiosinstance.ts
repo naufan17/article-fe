@@ -1,9 +1,8 @@
 'use client';
 
+import { useAuthStore } from '@/stores/use-auth-store';
 import Axios, { type AxiosInstance } from 'axios';
 import router from 'next/router';
-import { setLogout } from '@/store/slices/auth-slice';
-import { store } from '@/store/store';
 
 const axiosInstance: AxiosInstance = Axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -16,7 +15,7 @@ const axiosInstance: AxiosInstance = Axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = store.getState().auth.token;
+    const token = useAuthStore.getState().token
 
     if (token) config.headers.Authorization = `Bearer ${token}`;
     
@@ -35,7 +34,7 @@ axiosInstance.interceptors.response.use(
       error.response?.data.message === 'jwt malformed' ||
       error.response?.data.message === 'jwt signature is required'
     ) {
-      store.dispatch(setLogout())
+      useAuthStore.getState().setLogout()
       router.push('/login')
     }
 

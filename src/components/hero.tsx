@@ -1,11 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/store/store";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { NavUser } from "@/components/nav-user";
-import { setPage } from "@/store/slices/page-slice";
+import { useAuthStore } from "@/stores/use-auth-store";
+import { usePageStore } from "@/stores/use-page-store";
 
 interface CategoryProps {
   data: {
@@ -30,8 +28,8 @@ interface CategoryProps {
 }
 
 export function Hero({ data, category, setCategory, title, setTitle }: CategoryProps) {
-  const dispatch = useDispatch<AppDispatch>();
-  const isAuthenticated: boolean = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const { isAuthenticated } = useAuthStore();
+  const { setPage } = usePageStore();
 
   return (
     <>
@@ -92,7 +90,7 @@ export function Hero({ data, category, setCategory, title, setTitle }: CategoryP
                   checked={category === cat.id}
                   onCheckedChange={(checked) => {
                     setCategory(checked ? cat.id : undefined)
-                    dispatch(setPage({ key: 'articles', page: 1 }))
+                    setPage({ key: 'articles', page: 1 })
                   }}
                 >
                   {cat.name}
